@@ -1,0 +1,35 @@
+{
+    "name": "ecodev/graphql-upload",
+    "description": "A middleware to support file uploads in GraphQL",
+    "type": "library",
+    "scripts": {
+        "check": [
+            "php-cs-fixer fix --ansi --dry-run --diff",
+            "phpunit --color=always"
+        ],
+        "fix": [
+            "php-cs-fixer fix --ansi"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "GraphQL\\Upload\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GraphQLTests\\Upload\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "webonyx/graphql-php": "^0.11.5",
+        "http-interop/http-server-middleware": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "friendsofphp/php-cs-fixer": "^2.9",
+        "zendframework/zend-diactoros": "^1.7"
+    },
+    "license": "MIT"
+}
