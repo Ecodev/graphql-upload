@@ -2,6 +2,7 @@
     "name": "ecodev/graphql-upload",
     "description": "A middleware to support file uploads in GraphQL",
     "type": "library",
+    "keywords": ["api", "graphql", "upload", "multipart", "middleware"],
     "scripts": {
         "check": [
             "php-cs-fixer fix --ansi --dry-run --diff",
