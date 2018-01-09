@@ -16,6 +16,20 @@ class UploadMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $request = $this->processRequest($request);
+
+        return $handler->handle($request);
+    }
+
+    /**
+     * Process the request and return either a modified request or the original one
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return ServerRequestInterface
+     */
+    public function processRequest(ServerRequestInterface $request): ServerRequestInterface
+    {
         $contentType = $request->getHeader('content-type')[0] ?? '';
 
         if (mb_stripos($contentType, 'multipart/form-data') !== false) {
@@ -23,7 +37,7 @@ class UploadMiddleware implements MiddlewareInterface
             $request = $this->parseUploadedFiles($request);
         }
 
-        return $handler->handle($request);
+        return $request;
     }
 
     /**
@@ -64,6 +78,11 @@ class UploadMiddleware implements MiddlewareInterface
             ->withParsedBody($result);
     }
 
+    /**
+     * Validates that the request meet our expectations
+     *
+     * @param ServerRequestInterface $request
+     */
     private function validateParsedBody(ServerRequestInterface $request): void
     {
         $bodyParams = $request->getParsedBody();

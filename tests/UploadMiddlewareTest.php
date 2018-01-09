@@ -12,17 +12,56 @@ use GraphQL\Type\Definition\Type;
 use GraphQL\Type\Schema;
 use GraphQL\Upload\UploadMiddleware;
 use GraphQL\Upload\UploadType;
-use GraphQLTests\Upload\Psr7\PsrResponseStub;
 use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
 use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
 
 class UploadMiddlewareTest extends TestCase
 {
+    /**
+     * @var UploadMiddleware
+     */
+    private $middleware;
+
+    public function setUp(): void
+    {
+        $this->middleware = new UploadMiddleware();
+    }
+
+    public function testProcess(): void
+    {
+        $response = new Response();
+        $handler = new class($response) implements RequestHandlerInterface {
+            private $response;
+
+            public function __construct(ResponseInterface $response)
+            {
+                $this->response = $response;
+            }
+
+            public function handle(ServerRequestInterface $request): ResponseInterface
+            {
+                return $this->response;
+            }
+        };
+
+        $middleware = $this->getMockBuilder(UploadMiddleware::class)
+            ->setMethods(['processRequest'])
+            ->getMock();
+
+        // The request should be forward to processRequest()
+        $request = new ServerRequest();
+        $middleware->expects($this->once())->method('processRequest')->with($request);
+
+        $actualResponse = $middleware->process($request, $handler);
+        self::assertSame($response, $actualResponse, 'should return the mocked response');
+    }
+
     public function testParsesMultipartRequest(): void
     {
         $query = '{my query}';
@@ -47,7 +86,7 @@ class UploadMiddlewareTest extends TestCase
         ];
 
         $request = $this->createRequest($query, $variables, $map, $files, 'op');
-        $processedRequest = $this->processUpload($request);
+        $processedRequest = $this->middleware->processRequest($request);
 
         $variables['uploads'] = [
             0 => $file1,
@@ -61,7 +100,7 @@ class UploadMiddlewareTest extends TestCase
     public function testEmptyRequestIsValid(): void
     {
         $request = $this->createRequest('{my query}', [], [], [], 'op');
-        $processedRequest = $this->processUpload($request);
+        $processedRequest = $this->middleware->processRequest($request);
 
         self::assertSame('application/json', $processedRequest->getHeader('content-type')[0], 'request should have been transformed as application/json');
         self::assertSame([], $processedRequest->getParsedBody()['variables'], 'variables should still be empty');
@@ -70,7 +109,7 @@ class UploadMiddlewareTest extends TestCase
     public function testNonMultipartRequestAreNotTouched(): void
     {
         $request = new ServerRequest();
-        $processedRequest = $this->processUpload($request);
+        $processedRequest = $this->middleware->processRequest($request);
 
         self::assertSame($request, $processedRequest, 'request should have been transformed as application/json');
     }
@@ -84,7 +123,7 @@ class UploadMiddlewareTest extends TestCase
 
         $this->expectException(InvariantViolation::class);
         $this->expectExceptionMessage('PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got empty array');
-        $this->processUpload($request);
+        $this->middleware->processRequest($request);
     }
 
     public function testNullRequestShouldThrows(): void
@@ -96,7 +135,7 @@ class UploadMiddlewareTest extends TestCase
 
         $this->expectException(InvariantViolation::class);
         $this->expectExceptionMessage('PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got null');
-        $this->processUpload($request);
+        $this->middleware->processRequest($request);
     }
 
     public function testInvalidRequestShouldThrows(): void
@@ -108,7 +147,18 @@ class UploadMiddlewareTest extends TestCase
 
         $this->expectException(RequestError::class);
         $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got "foo"');
-        $this->processUpload($request);
+        $this->middleware->processRequest($request);
+    }
+
+    public function testOtherContentTypeShouldNotBeTouched(): void
+    {
+        $request = new ServerRequest();
+        $request = $request
+            ->withHeader('content-type', ['application/json'])
+            ->withParsedBody('foo');
+
+        $processedRequest = $this->middleware->processRequest($request);
+        self::assertSame($request, $processedRequest);
     }
 
     public function testRequestWithoutMapShouldThrows(): void
@@ -122,7 +172,7 @@ class UploadMiddlewareTest extends TestCase
 
         $this->expectException(RequestError::class);
         $this->expectExceptionMessage('The request must define a `map`');
-        $this->processUpload($request);
+        $this->middleware->processRequest($request);
     }
 
     public function testCanUploadFileWithStandardServer(): void
@@ -143,7 +193,7 @@ class UploadMiddlewareTest extends TestCase
 
         $request = $this->createRequest($query, $variables, $map, $files, 'TestUpload');
 
-        $processedRequest = $this->processUpload($request);
+        $processedRequest = $this->middleware->processRequest($request);
 
         $server = $this->createServer();
         $response = $server->executePsrRequest($processedRequest);
@@ -169,31 +219,6 @@ class UploadMiddlewareTest extends TestCase
             ->withUploadedFiles($files);
 
         return $request;
-    }
-
-    /**
-     * Process the request through our middleware, but return the request instead of a response
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return ServerRequestInterface
-     */
-    private function processUpload(ServerRequestInterface $request): ServerRequestInterface
-    {
-        $handler = new class() implements RequestHandlerInterface {
-            public function handle(ServerRequestInterface $request): ResponseInterface
-            {
-                $response = new PsrResponseStub();
-                $response->request = $request;
-
-                return $response;
-            }
-        };
-
-        $middleware = new UploadMiddleware();
-        $response = $middleware->process($request, $handler);
-
-        return $response->request;
     }
 
     private function createServer(): StandardServer

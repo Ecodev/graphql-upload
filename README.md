@@ -8,7 +8,9 @@
 [![License](https://poser.pugx.org/ecodev/graphql-upload/license.png)](https://packagist.org/packages/ecodev/graphql-upload)
 [![Join the chat at https://gitter.im/Ecodev/graphql-upload](https://badges.gitter.im/Ecodev/graphql-upload.svg)](https://gitter.im/Ecodev/graphql-upload)
 
-A middleware to support file uploads in GraphQL. It implements [the multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec) for [webonyx/graphql-php](https://github.com/webonyx/graphql-php).
+A middleware to support file uploads in GraphQL. It implements
+[the multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
+for [webonyx/graphql-php](https://github.com/webonyx/graphql-php).
 
 
 ## Quick start
@@ -19,7 +21,9 @@ Install the library via composer:
 composer require ecodev/graphql-upload
 ```
 
-Configure the middleware. In Zend Expressive, it would typically be in `config/routes.php` something like:
+### Configure as middleware
+
+In Zend Expressive, it would typically be in `config/routes.php` something like:
 
 ```php
 use Application\Action\GraphQLAction;
@@ -31,10 +35,36 @@ $app->post('/graphql', [
     UploadMiddleware::class, // This is the magic
     GraphQLAction::class,
 ], 'graphql');
-
 ```
 
-And start using it:
+### Direct usage
+
+Or if you don't use middleware, it can be called directly like so:
+
+```php
+<?php
+
+use GraphQL\Server\StandardServer;
+use GraphQL\Upload\UploadMiddleware;
+use Zend\Diactoros\ServerRequestFactory;
+
+// Create request (or get it from a framework)
+$request = ServerRequestFactory::fromGlobals();
+$request = $request->withParsedBody(json_decode($request->getBody()->getContents(), true));
+
+// Process uploaded files
+$uploadMiddleware = new UploadMiddleware();
+$request = $uploadMiddleware->processRequest($request);
+
+// Execute request and emits response
+$server = new StandardServer(/* your config here */);
+$result = $server->executePsrRequest($request);
+$server->getHelper()->sendResponse($result);
+```
+
+### Usage in schema
+
+Then you can start using in your mutations like so:
 
 ```php
 <?php
@@ -76,4 +106,6 @@ $schema = new Schema([
 
 ## Limitations
 
-- It only works with PSR-7 requests. If you were not using PSR-7 yet, [zend-diactoros](https://github.com/zendframework/zend-diactoros) is one of many implementation that could be used to create PSR-7 requests.
+- It only works with PSR-7 requests. If you were not using PSR-7 yet,
+[zend-diactoros](https://github.com/zendframework/zend-diactoros) is one of many 
+implementation that could be used to create PSR-7 requests.
