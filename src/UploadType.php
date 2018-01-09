@@ -21,7 +21,7 @@ class UploadType extends ScalarType
      * @var string
      */
     public $description =
-        'The `Upload` special type represents a file to be uploaded in the same HTTP query as specified by
+        'The `Upload` special type represents a file to be uploaded in the same HTTP request as specified by
  [graphql-multipart-request-spec](https://github.com/jaydenseric/graphql-multipart-request-spec).';
 
     /**
