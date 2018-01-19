@@ -56,8 +56,10 @@ class UploadMiddleware implements MiddlewareInterface
 
         $map = json_decode($bodyParams['map'], true);
         $result = json_decode($bodyParams['operations'], true);
-        $result['operation'] = $result['operationName'];
-        unset($result['operationName']);
+        if (isset($result['operationName'])) {
+            $result['operation'] = $result['operationName'];
+            unset($result['operationName']);
+        }
 
         foreach ($map as $fileKey => $locations) {
             foreach ($locations as $location) {
