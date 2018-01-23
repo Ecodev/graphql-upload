@@ -13,11 +13,11 @@ use GraphQL\Type\Schema;
 use GraphQL\Upload\UploadMiddleware;
 use GraphQL\Upload\UploadType;
 use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
-use Interop\Http\Server\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
 

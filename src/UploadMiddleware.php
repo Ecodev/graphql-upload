@@ -7,10 +7,10 @@ namespace GraphQL\Upload;
 use GraphQL\Error\InvariantViolation;
 use GraphQL\Server\RequestError;
 use GraphQL\Utils\Utils;
-use Interop\Http\Server\MiddlewareInterface;
-use Interop\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class UploadMiddleware implements MiddlewareInterface
 {
