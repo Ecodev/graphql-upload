@@ -24,8 +24,8 @@
     },
     "require": {
         "php": "^7.1",
-        "webonyx/graphql-php": "^0.10.1",
-        "psr/http-server-middleware": "^1.0"
+        "psr/http-server-middleware": "^1.0",
+        "webonyx/graphql-php": "^0.11.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.5",
