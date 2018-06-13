@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    paths:
+        - src/
+        - tests/
+    ignoreErrors:
+        - '~^Call to an undefined method PHPUnit\\Framework\\MockObject\\MockObject\:\:process\(\)\.$~'

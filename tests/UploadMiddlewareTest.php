@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GraphQLTests\Executor;
+namespace GraphQLTests\Upload;
 
 use GraphQL\Error\InvariantViolation;
+use GraphQL\Executor\ExecutionResult;
 use GraphQL\Server\RequestError;
 use GraphQL\Server\StandardServer;
 use GraphQL\Type\Definition\ObjectType;
@@ -196,6 +197,8 @@ class UploadMiddlewareTest extends TestCase
         $processedRequest = $this->middleware->processRequest($request);
 
         $server = $this->createServer();
+
+        /** @var ExecutionResult $response */
         $response = $server->executePsrRequest($processedRequest);
 
         $expected = ['testUpload' => 'Uploaded file was image.jpg (image/jpeg) with description: foo bar'];
