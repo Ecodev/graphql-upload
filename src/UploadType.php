@@ -56,10 +56,11 @@ class UploadType extends ScalarType
      * Parses an externally provided literal value (hardcoded in GraphQL query) to use as an input
      *
      * @param \GraphQL\Language\AST\Node $valueNode
+     * @param null|array $variables
      *
      * @return mixed
      */
-    public function parseLiteral($valueNode)
+    public function parseLiteral($valueNode, array $variables = null)
     {
         throw new Error('`Upload` cannot be hardcoded in query, be sure to conform to GraphQL multipart request specification. Instead got: ' . $valueNode->kind, [$valueNode]);
     }

@@ -25,7 +25,7 @@ class UploadTypeTest extends TestCase
     {
         $type = new UploadType();
         $this->expectException(\UnexpectedValueException::class);
-        $this->expectExceptionMessage('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: "foo"');
+        $this->expectExceptionMessage('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: foo');
 
         $type->parseValue('foo');
     }
