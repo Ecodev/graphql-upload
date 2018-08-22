@@ -8,7 +8,7 @@
 [![License](https://poser.pugx.org/ecodev/graphql-upload/license.png)](https://packagist.org/packages/ecodev/graphql-upload)
 [![Join the chat at https://gitter.im/Ecodev/graphql-upload](https://badges.gitter.im/Ecodev/graphql-upload.svg)](https://gitter.im/Ecodev/graphql-upload)
 
-A middleware to support file uploads in GraphQL. It implements
+A [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware to support file uploads in GraphQL. It implements
 [the multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
 for [webonyx/graphql-php](https://github.com/webonyx/graphql-php).
 
@@ -37,9 +37,19 @@ $app->post('/graphql', [
 ], 'graphql');
 ```
 
+#### Other frameworks
+
+This lib is an implementation of PSR-15, so it can be used with any
+framework supporting PSR-15. For specific configuration instructions, refer
+to your framework documentation.
+
+If your framework does not support PSR-15 middlewares, you will probably 
+need some kind of bridge. Again, refer to your framework for specific instructions.
+Or else, you could use the direct usage below for manual integration.
+
 ### Direct usage
 
-Or if you don't use middleware, it can be called directly like so:
+If you don't use middleware, it can be called directly like so:
 
 ```php
 <?php
