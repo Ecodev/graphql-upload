@@ -144,10 +144,10 @@ class UploadMiddlewareTest extends TestCase
         $request = new ServerRequest();
         $request = $request
             ->withHeader('content-type', ['multipart/form-data'])
-            ->withParsedBody('foo');
+            ->withParsedBody(new \stdClass());
 
         $this->expectException(RequestError::class);
-        $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got "foo"');
+        $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got []');
         $this->middleware->processRequest($request);
     }
 
@@ -156,7 +156,7 @@ class UploadMiddlewareTest extends TestCase
         $request = new ServerRequest();
         $request = $request
             ->withHeader('content-type', ['application/json'])
-            ->withParsedBody('foo');
+            ->withParsedBody(new \stdClass());
 
         $processedRequest = $this->middleware->processRequest($request);
         self::assertSame($request, $processedRequest);
