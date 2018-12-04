@@ -41,7 +41,7 @@ class UploadType extends ScalarType
      *
      * @param mixed $value
      *
-     * @return mixed
+     * @return UploadedFileInterface
      */
     public function parseValue($value)
     {
