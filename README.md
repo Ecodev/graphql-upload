@@ -43,7 +43,7 @@ This lib is an implementation of PSR-15, so it can be used with any
 framework supporting PSR-15. For specific configuration instructions, refer
 to your framework documentation.
 
-If your framework does not support PSR-15 middlewares, you will probably 
+If your framework does not support PSR-15 middleware, you will probably
 need some kind of bridge. Again, refer to your framework for specific instructions.
 Or else, you could use the direct usage below for manual integration.
 

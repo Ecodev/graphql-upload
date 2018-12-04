@@ -25,6 +25,7 @@
     },
     "require": {
         "php": "^7.1",
+        "ext-json": "*",
         "psr/http-server-middleware": "^1.0",
         "webonyx/graphql-php": "^0.13.0"
     },
