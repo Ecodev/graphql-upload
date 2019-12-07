@@ -56,7 +56,7 @@ class UploadMiddlewareTest extends TestCase
         };
 
         $middleware = $this->getMockBuilder(UploadMiddleware::class)
-            ->setMethods(['processRequest'])
+            ->onlyMethods(['processRequest'])
             ->getMock();
 
         // The request should be forward to processRequest()
