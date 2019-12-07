@@ -21,6 +21,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
+use Zend\Diactoros\UploadedFile;
 
 class UploadMiddlewareTest extends TestCase
 {
@@ -38,6 +39,9 @@ class UploadMiddlewareTest extends TestCase
     {
         $response = new Response();
         $handler = new class($response) implements RequestHandlerInterface {
+            /**
+             * @var ResponseInterface
+             */
             private $response;
 
             public function __construct(ResponseInterface $response)
@@ -205,6 +209,15 @@ class UploadMiddlewareTest extends TestCase
         $this->assertSame($expected, $response->data);
     }
 
+    /**
+     * @param string $query
+     * @param mixed[] $variables
+     * @param string[][] $map
+     * @param UploadedFile[] $files
+     * @param string $operation
+     *
+     * @return ServerRequestInterface
+     */
     private function createRequest(string $query, array $variables, array $map, array $files, string $operation): ServerRequestInterface
     {
         $request = new ServerRequest();

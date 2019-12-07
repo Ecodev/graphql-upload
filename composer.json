@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "ext-json": "*",
         "psr/http-server-middleware": "^1.0",
         "webonyx/graphql-php": "^0.13.0"
@@ -33,7 +33,7 @@
         "friendsofphp/php-cs-fixer": "@stable",
         "zendframework/zend-diactoros":"@stable",
         "phpunit/phpunit": "@stable",
-        "phpstan/phpstan": "^0.10.5"
+        "phpstan/phpstan": "@stable"
     },
     "license": "MIT"
 }
