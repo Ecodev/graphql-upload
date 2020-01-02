@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bb595c1adf7af4a1380203f9cfb05b3",
+    "content-hash": "5e4c31a885c939d1102fe949a0988d99",
     "packages": [
         {
             "name": "psr/http-message",
@@ -3323,8 +3323,8 @@
     "stability-flags": {
         "friendsofphp/php-cs-fixer": 0,
         "laminas/laminas-diactoros": 0,
-        "phpunit/phpunit": 0,
-        "phpstan/phpstan": 0
+        "phpstan/phpstan": 0,
+        "phpunit/phpunit": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
