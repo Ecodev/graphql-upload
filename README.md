@@ -23,11 +23,11 @@ composer require ecodev/graphql-upload
 
 ### Configure as middleware
 
-In Zend Expressive, it would typically be in `config/routes.php` something like:
+In Laminas Mezzio, it would typically be in `config/routes.php` something like:
 
 ```php
 use Application\Action\GraphQLAction;
-use Zend\Expressive\Helper\BodyParams\BodyParamsMiddleware;
+use Mezzio\Helper\BodyParams\BodyParamsMiddleware;
 use GraphQL\Upload\UploadMiddleware;
 
 $app->post('/graphql', [
@@ -56,7 +56,7 @@ If you don't use middleware, it can be called directly like so:
 
 use GraphQL\Server\StandardServer;
 use GraphQL\Upload\UploadMiddleware;
-use Zend\Diactoros\ServerRequestFactory;
+use Laminas\Diactoros\ServerRequestFactory;
 
 // Create request (or get it from a framework)
 $request = ServerRequestFactory::fromGlobals();
@@ -117,5 +117,5 @@ $schema = new Schema([
 ## Limitations
 
 - It only works with PSR-7 requests. If you were not using PSR-7 yet,
-[zend-diactoros](https://github.com/zendframework/zend-diactoros) is one of many 
+[laminas-diactoros](https://github.com/laminas/laminas-diactoros) is one of many 
 implementation that could be used to create PSR-7 requests.

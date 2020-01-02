@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
-        "zendframework/zend-diactoros":"@stable",
+        "laminas/laminas-diactoros": "@stable",
         "phpunit/phpunit": "@stable",
         "phpstan/phpstan": "@stable"
     },
