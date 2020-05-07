@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Output;
 
-use GraphQL\Doctrine\Types;
 use GraphQL\Type\Definition\ObjectType;
 
 class PaginationType extends ObjectType
@@ -12,11 +11,10 @@ class PaginationType extends ObjectType
     /**
      * PaginationType constructor.
      *
-     * @param Types $types
      * @param class-string $class
      * @param array $extraFields
      */
-    public function __construct(Types $types, string $class, array $extraFields)
+    public function __construct(string $class, array $extraFields)
     {
         $c = new \ReflectionClass($class);
         $s = $c->getShortName();
@@ -25,7 +23,7 @@ class PaginationType extends ObjectType
         $config = [
             'name' => $name,
             'description' => 'Describe available pages',
-            'fields' => function () use ($types, $class, $extraFields): array {
+            'fields' => function () use ($class, $extraFields): array {
                 $fields = [
                     'offset' => [
                         'type' => self::nonNull(self::int()),
@@ -44,7 +42,7 @@ class PaginationType extends ObjectType
                         'description' => 'The length of the total number of items that are being paginated',
                     ],
                     'items' => [
-                        'type' => self::nonNull(self::listOf(self::nonNull($types->getOutput($class)))),
+                        'type' => self::nonNull(self::listOf(self::nonNull(_types()->getOutput($class)))),
                         'description' => 'Paginated items',
                     ],
                 ];

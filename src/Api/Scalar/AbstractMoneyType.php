@@ -16,11 +16,11 @@ use Money\Money;
 abstract class AbstractMoneyType extends ScalarType
 {
     /**
-     * @param int|string $value
+     * @param string $value
      *
      * @return Money
      */
-    abstract protected function createMoney($value): Money;
+    abstract protected function createMoney(string $value): Money;
 
     /**
      * Serializes an internal value to include in a response.
@@ -31,6 +31,10 @@ abstract class AbstractMoneyType extends ScalarType
      */
     public function serialize($value)
     {
+        if (is_numeric($value)) {
+            $value = $this->createMoney((string) $value);
+        }
+
         if ($value instanceof Money) {
             return bcdiv($value->getAmount(), '100', 2);
         }

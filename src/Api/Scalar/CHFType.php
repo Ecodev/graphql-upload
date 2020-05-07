@@ -13,7 +13,7 @@ class CHFType extends AbstractMoneyType
      */
     public $description = 'A CHF money amount.';
 
-    protected function createMoney($value): Money
+    protected function createMoney(string $value): Money
     {
         return Money::CHF($value);
     }

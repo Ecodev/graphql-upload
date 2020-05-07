@@ -13,7 +13,7 @@ class EURType extends AbstractMoneyType
      */
     public $description = 'An EUR money amount.';
 
-    protected function createMoney($value): Money
+    protected function createMoney(string $value): Money
     {
         return Money::EUR($value);
     }

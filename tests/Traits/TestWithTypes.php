@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EcodevTests\Felix;
+namespace EcodevTests\Felix\Traits;
 
 use DateTime;
 use GraphQL\Doctrine\Types;
@@ -11,9 +11,9 @@ use Laminas\ServiceManager\ServiceManager;
 /**
  * Trait to easily set up types and assert them
  */
-trait TypesTrait
+trait TestWithTypes
 {
-    use EntityManagerTrait;
+    use TestWithEntityManager;
 
     /**
      * @var Types

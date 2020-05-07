@@ -21,6 +21,9 @@ class CHFTypeTest extends TestCase
         $money = Money::CHF('995');
         $actual = $type->serialize($money);
         self::assertSame('9.95', $actual);
+
+        $actual = $type->serialize(995);
+        self::assertSame('9.95', $actual, 'should also accept raw value when aggregated from DB');
     }
 
     /**

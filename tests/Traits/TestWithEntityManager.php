@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EcodevTests\Felix;
+namespace EcodevTests\Felix\Traits;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
@@ -10,7 +10,7 @@ use Doctrine\ORM\Tools\Setup;
 /**
  * Trait to easily set up a dummy entity manager
  */
-trait EntityManagerTrait
+trait TestWithEntityManager
 {
     /**
      * @var EntityManager

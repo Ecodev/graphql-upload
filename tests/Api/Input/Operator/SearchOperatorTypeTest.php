@@ -10,13 +10,13 @@ use Ecodev\Felix\Api\Input\Operator\SearchOperatorType;
 use Ecodev\Felix\Testing\Api\Input\Operator\AbstractOperatorType;
 use EcodevTests\Felix\Blog\Model\Post;
 use EcodevTests\Felix\Blog\Model\User;
-use EcodevTests\Felix\TypesTrait;
+use EcodevTests\Felix\Traits\TestWithTypes;
 use GraphQL\Doctrine\Factory\UniqueNameFactory;
 use GraphQL\Type\Definition\Type;
 
 class SearchOperatorTypeTest extends AbstractOperatorType
 {
-    use TypesTrait;
+    use TestWithTypes;
 
     /**
      * @dataProvider providerSearch

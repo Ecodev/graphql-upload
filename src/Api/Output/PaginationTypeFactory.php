@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api\Output;
 
 use Ecodev\Felix\Model\Model;
-use GraphQL\Doctrine\Types;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
@@ -35,9 +34,8 @@ class PaginationTypeFactory implements AbstractFactoryInterface
         }
 
         $extraFields = $this->getExtraFields($class);
-        $types = $container->get(Types::class);
 
-        $type = new PaginationType($types, $class, $extraFields);
+        $type = new PaginationType($class, $extraFields);
 
         return $type;
     }
