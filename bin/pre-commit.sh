@@ -7,7 +7,7 @@ if [ "$files" != "" ]; then
 
     # Run php syntax check before commit
     for file in ${files}; do
-        php -l ${file}
+        php -l "${file}"
         if [ $? -ne 0 ]; then
             pass=false
         fi

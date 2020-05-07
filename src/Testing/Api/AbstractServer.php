@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Testing\Api;
 
-use _HumbugBoxe8a38a0636f4\Nette\Neon\Exception;
 use Ecodev\Felix\Api\Server;
 use Ecodev\Felix\Testing\Traits\TestWithTransaction;
+use Exception;
 use GraphQL\Executor\ExecutionResult;
 use GraphQL\Type\Schema;
 use Laminas\Diactoros\ServerRequest;

@@ -6,13 +6,6 @@ namespace EcodevTests\Felix;
 
 use DateTime;
 use GraphQL\Doctrine\Types;
-use GraphQL\Type\Definition\InputType;
-use GraphQL\Type\Definition\ObjectType;
-use GraphQL\Type\Definition\OutputType;
-use GraphQL\Type\Definition\Type;
-use GraphQL\Type\Definition\WrappingType;
-use GraphQL\Type\Schema;
-use GraphQL\Utils\SchemaPrinter;
 use Laminas\ServiceManager\ServiceManager;
 
 /**
@@ -40,64 +33,5 @@ trait TypesTrait
         ]);
 
         $this->types = new Types($this->entityManager, $customTypes);
-    }
-
-    private function assertType(string $expectedFile, Type $type): void
-    {
-        $actual = SchemaPrinter::printType($type) . PHP_EOL;
-        self::assertStringEqualsFile($expectedFile, $actual, 'Should equals expectation from: ' . $expectedFile);
-    }
-
-    private function assertAllTypes(string $expectedFile, Type $type): void
-    {
-        $schema = $this->getSchemaForType($type);
-        $actual = SchemaPrinter::doPrint($schema);
-
-        self::assertStringEqualsFile($expectedFile, $actual, 'Should equals expectation from: ' . $expectedFile);
-    }
-
-    /**
-     * Create a temporary schema for the given type
-     *
-     * @param Type $type
-     *
-     * @return Schema
-     */
-    private function getSchemaForType(Type $type): Schema
-    {
-        if ($type instanceof WrappingType) {
-            $wrappedType = $type->getWrappedType(true);
-        } else {
-            $wrappedType = $type;
-        }
-
-        if ($wrappedType instanceof OutputType) {
-            $outputType = $type;
-            $args = [];
-        } elseif ($wrappedType instanceof InputType) {
-            $outputType = Type::boolean();
-            $args = [
-                'defaultArg' => $type,
-            ];
-        } else {
-            throw new \Exception('Unsupported type: ' . get_class($wrappedType));
-        }
-
-        $config = [
-            'query' => new ObjectType([
-                'name' => 'query',
-                'fields' => [
-                    'defaultField' => [
-                        'type' => $outputType,
-                        'args' => $args,
-                    ],
-                ],
-            ]),
-        ];
-
-        $schema = new Schema($config);
-        $schema->assertValid();
-
-        return $schema;
     }
 }

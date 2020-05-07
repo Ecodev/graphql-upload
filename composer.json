@@ -30,6 +30,7 @@
         "php": "^7.2",
         "ext-bcmath": "*",
         "ext-json": "*",
+        "ext-pdo": "*",
         "moneyphp/money": "^3.3",
         "laminas/laminas-servicemanager": "^3.4",
         "cakephp/chronos": "^2.0",
