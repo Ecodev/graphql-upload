@@ -1,0 +1,46 @@
+{
+    "name": "ecodev/felix",
+    "description": "Various utilities tailored for our ecosystem",
+    "type": "library",
+    "license": "MIT",
+    "scripts": {
+        "check": [
+            "php-cs-fixer fix --ansi --dry-run --diff",
+            "phpunit --color=always",
+            "phpstan analyse --ansi"
+        ],
+        "fix": [
+            "php-cs-fixer fix --ansi"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Ecodev\\Felix\\": "src"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EcodevTests\\Felix\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "ext-bcmath": "*",
+        "ext-json": "*",
+        "moneyphp/money": "^3.3",
+        "laminas/laminas-servicemanager": "^3.4",
+        "cakephp/chronos": "^2.0",
+        "mezzio/mezzio-session": "^1.3",
+        "laminas/laminas-log": "^2.12",
+        "laminas/laminas-diactoros": "^2.3",
+        "ecodev/graphql-doctrine": "^6.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "@stable",
+        "phpstan/phpstan": "@stable",
+        "phpunit/phpunit": "@stable"
+    }
+}

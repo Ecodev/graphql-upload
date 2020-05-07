@@ -1,0 +1,15 @@
+parameters:
+    level: max
+    paths:
+        - src/
+        - tests/
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+        - '~^Access to an undefined property GraphQL\\Language\\AST\\Node::\$kind\.$~'
+        - '~^Parameter \#1 \$wrappedType of static method GraphQL\\Type\\Definition\\Type\:\:nonNull\(\) expects GraphQL\\Type\\Definition\\NullableType, GraphQL\\Type\\Definition\\.* given\.$~'
+        - '~^Call to an undefined method Doctrine\\Persistence\\ObjectRepository\:\:createQueryBuilder\(\)\.$~'
+        - '~^Method Ecodev\\Felix\\Api\\Server\:\:execute\(\) should return array\<GraphQL\\Executor\\ExecutionResult\>\|GraphQL\\Executor\\ExecutionResult but returns array\<GraphQL\\Executor\\ExecutionResult\>\|GraphQL\\Executor\\ExecutionResult\|GraphQL\\Executor\\Promise\\Promise\.$~'
+        -
+            message: '~^Cannot call method .*\(\) on Throwable\|null\.$~'
+            path: src/Api/Server.php

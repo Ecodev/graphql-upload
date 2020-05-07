@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.4/phpunit.xsd"
+         bootstrap="./vendor/autoload.php"
+         colors="true"
+         cacheResultFile="/tmp/.felix.phpunit.result.cache"
+>
+    <testsuites>
+        <testsuite name="tests">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <!-- Include only our own code for code coverage statistics -->
+            <directory>./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>

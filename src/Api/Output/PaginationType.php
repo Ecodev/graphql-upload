@@ -1,0 +1,60 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ecodev\Felix\Api\Output;
+
+use GraphQL\Doctrine\Types;
+use GraphQL\Type\Definition\ObjectType;
+
+class PaginationType extends ObjectType
+{
+    /**
+     * PaginationType constructor.
+     *
+     * @param Types $types
+     * @param class-string $class
+     * @param array $extraFields
+     */
+    public function __construct(Types $types, string $class, array $extraFields)
+    {
+        $c = new \ReflectionClass($class);
+        $s = $c->getShortName();
+        $name = $s . 'Pagination';
+
+        $config = [
+            'name' => $name,
+            'description' => 'Describe available pages',
+            'fields' => function () use ($types, $class, $extraFields): array {
+                $fields = [
+                    'offset' => [
+                        'type' => self::nonNull(self::int()),
+                        'description' => 'The zero-based index of the displayed list of items',
+                    ],
+                    'pageIndex' => [
+                        'type' => self::nonNull(self::int()),
+                        'description' => 'The zero-based page index of the displayed list of items',
+                    ],
+                    'pageSize' => [
+                        'type' => self::nonNull(self::int()),
+                        'description' => 'Number of items to display on a page',
+                    ],
+                    'length' => [
+                        'type' => self::nonNull(self::int()),
+                        'description' => 'The length of the total number of items that are being paginated',
+                    ],
+                    'items' => [
+                        'type' => self::nonNull(self::listOf(self::nonNull($types->getOutput($class)))),
+                        'description' => 'Paginated items',
+                    ],
+                ];
+
+                $fields = array_merge($fields, $extraFields);
+
+                return $fields;
+            },
+        ];
+
+        parent::__construct($config);
+    }
+}
