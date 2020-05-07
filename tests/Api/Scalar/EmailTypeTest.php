@@ -12,9 +12,6 @@ class EmailTypeTest extends TestCase
 {
     /**
      * @dataProvider providerEmails
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testSerialize(?string $input, ?string $expected, bool $isValid): void
     {
@@ -25,9 +22,6 @@ class EmailTypeTest extends TestCase
 
     /**
      * @dataProvider providerEmails
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testParseValue(?string $input, ?string $expected, bool $isValid): void
     {
@@ -44,9 +38,6 @@ class EmailTypeTest extends TestCase
 
     /**
      * @dataProvider providerEmails
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testParseLiteral(?string $input, ?string $expected, bool $isValid): void
     {
@@ -66,6 +57,9 @@ class EmailTypeTest extends TestCase
     {
         return [
             ['john@example.com', 'john@example.com', true],
+            ['josé@example.com', 'josé@example.com', true],
+            ['josé@example.non-existing-tld', 'josé@example.non-existing-tld', false],
+            ['root@localhost', 'root@localhost', false],
             ['', null, true],
             ['foo', 'foo', false],
             [null, null, true],

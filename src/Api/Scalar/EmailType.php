@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api\Scalar;
 
 use GraphQL\Language\AST\StringValueNode;
+use Laminas\Validator\EmailAddress;
 
 /**
  * Represent an email address
@@ -24,7 +25,9 @@ class EmailType extends AbstractStringBasedType
      */
     protected function isValid($value): bool
     {
-        return $value === null || (is_string($value) && filter_var($value, FILTER_VALIDATE_EMAIL));
+        $validator = new EmailAddress();
+
+        return $value === null || (is_string($value) && $validator->isValid($value));
     }
 
     public function serialize($value)
