@@ -17,3 +17,5 @@ Install the library via composer:
 ```sh
 composer require ecodev/felix
 ```
+
+![Felix](logo.svg)
