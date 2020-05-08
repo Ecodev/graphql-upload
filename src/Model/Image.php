@@ -6,24 +6,25 @@ namespace Ecodev\Felix\Model;
 
 interface Image extends File
 {
+    public function getWidth(): int;
+
+    /**
+     * Set image width
+     */
+    public function setWidth(int $width): void;
+
     /**
      * Get image height
-     *
-     * @return int
      */
     public function getHeight(): int;
 
     /**
-     * Get mime
-     *
-     * @return string
+     * Set image height
      */
-    public function getMime(): string;
+    public function setHeight(int $height): void;
 
     /**
-     * Get filename (without path)
-     *
-     * @return string
+     * Get mime
      */
-    public function getFilename(): string;
+    public function getMime(): string;
 }

@@ -13,7 +13,9 @@ use Laminas\ServiceManager\ServiceManager;
  */
 trait TestWithTypes
 {
-    use TestWithEntityManager;
+    use TestWithEntityManager {
+        setUp as setUpEntityManager;
+    }
 
     /**
      * @var Types

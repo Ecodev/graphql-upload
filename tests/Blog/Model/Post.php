@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * A blog post with title and body
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="EcodevTests\Felix\Blog\Repository\PostRepository")
  */
 final class Post extends AbstractModel
 {

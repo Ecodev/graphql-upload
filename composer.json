@@ -41,7 +41,8 @@
         "ecodev/graphql-doctrine": "^6.4",
         "laminas/laminas-validator": "^2.13",
         "laminas/laminas-permissions-acl": "^2.7",
-        "imagine/imagine": "^1.2"
+        "imagine/imagine": "^1.2",
+        "doctrine/migrations": "^2.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
