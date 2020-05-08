@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Log;
 
-use Ecodev\Felix\Model\Log;
 use Interop\Container\ContainerInterface;
 use Laminas\Log\Logger;
 use Laminas\Log\Writer\Stream;

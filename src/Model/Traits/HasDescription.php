@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Model\Traits;
 
-use Ecodev\Felix\Utility;
-
 trait HasDescription
 {
     /**
@@ -22,7 +20,7 @@ trait HasDescription
      */
     public function setDescription(string $description): void
     {
-        $this->description = Utility::sanitizeRichText($description);
+        $this->description = $description;
     }
 
     /**

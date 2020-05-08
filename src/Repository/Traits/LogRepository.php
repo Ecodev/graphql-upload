@@ -6,12 +6,29 @@ namespace Ecodev\Felix\Repository\Traits;
 
 use Cake\Chronos\Chronos;
 use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\QueryBuilder;
 use Ecodev\Felix\Model\User;
 use Ecodev\Felix\Repository\LogRepository as LogRepositoryInterface;
 use Laminas\Log\Logger;
 
 trait LogRepository
 {
+    /**
+     * @return EntityManager
+     */
+    abstract protected function getEntityManager();
+
+    /**
+     * Creates a new QueryBuilder instance that is prepopulated for this entity name.
+     *
+     * @param string $alias
+     * @param string $indexBy the index for the from
+     *
+     * @return QueryBuilder
+     */
+    abstract public function createQueryBuilder($alias, $indexBy = null);
+
     /**
      * This should NOT be called directly, instead use `_log()` to log stuff
      *

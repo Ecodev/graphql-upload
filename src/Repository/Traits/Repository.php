@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Repository\Traits;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Ecodev\Felix\Model\User;
 use Ecodev\Felix\ORM\Query\Filter\AclFilter;
 
@@ -12,6 +14,16 @@ use Ecodev\Felix\ORM\Query\Filter\AclFilter;
  */
 trait Repository
 {
+    /**
+     * @return EntityManager
+     */
+    abstract protected function getEntityManager();
+
+    /**
+     * @return ClassMetadata
+     */
+    abstract protected function getClassMetadata();
+
     /**
      * Returns the AclFilter to fetch ACL filtering SQL
      *
