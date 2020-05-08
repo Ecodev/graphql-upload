@@ -29,6 +29,7 @@
     "require": {
         "php": "^7.2",
         "ext-bcmath": "*",
+        "ext-fileinfo": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "moneyphp/money": "^3.3",
@@ -39,7 +40,8 @@
         "laminas/laminas-diactoros": "^2.3",
         "ecodev/graphql-doctrine": "^6.4",
         "laminas/laminas-validator": "^2.13",
-        "laminas/laminas-permissions-acl": "^2.7"
+        "laminas/laminas-permissions-acl": "^2.7",
+        "imagine/imagine": "^1.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
