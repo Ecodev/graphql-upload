@@ -42,7 +42,9 @@
         "laminas/laminas-validator": "^2.13",
         "laminas/laminas-permissions-acl": "^2.7",
         "imagine/imagine": "^1.2",
-        "doctrine/migrations": "^2.2"
+        "doctrine/migrations": "^2.2",
+        "laminas/laminas-mail": "^2.10",
+        "laminas/laminas-view": "^2.11"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
