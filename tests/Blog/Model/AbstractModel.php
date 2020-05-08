@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EcodevTests\Felix\Blog\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ecodev\Felix\Model\HasOwner;
 use Ecodev\Felix\Model\Model;
 
 /**
@@ -12,7 +13,7 @@ use Ecodev\Felix\Model\Model;
  *
  * @ORM\MappedSuperclass
  */
-abstract class AbstractModel implements Model
+abstract class AbstractModel implements Model, HasOwner
 {
     /**
      * @var int
@@ -23,8 +24,29 @@ abstract class AbstractModel implements Model
      */
     protected $id;
 
-    public function getId(): int
+    /**
+     * @var null|User
+     */
+    private $owner;
+
+    public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return null|User
+     */
+    public function getOwner(): ?\Ecodev\Felix\Model\User
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param null|User $owner
+     */
+    public function setOwner(?User $owner): void
+    {
+        $this->owner = $owner;
     }
 }

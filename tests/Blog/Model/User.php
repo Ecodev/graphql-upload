@@ -12,7 +12,7 @@ use GraphQL\Doctrine\Annotation as API;
  *
  * @ORM\Entity
  */
-final class User extends AbstractModel
+final class User extends AbstractModel implements \Ecodev\Felix\Model\User
 {
     /**
      * @var string
@@ -42,4 +42,25 @@ final class User extends AbstractModel
      * @ORM\OneToMany(targetEntity="EcodevTests\Felix\Blog\Model\Post", mappedBy="user")
      */
     private $posts;
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getRole(): string
+    {
+        return 'member';
+    }
 }

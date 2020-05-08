@@ -37,7 +37,7 @@ return PhpCsFixer\Config::create()
         'ereg_to_preg' => true,
         'escape_implicit_backslashes' => true,
         'explicit_indirect_variable' => false, // I feel it makes the code actually harder to read
-        'explicit_string_variable' => true,
+        'explicit_string_variable' => false, // I feel it makes the code actually harder to read
         'final_internal_class' => true,
         'full_opening_tag' => true,
         'function_declaration' => true,

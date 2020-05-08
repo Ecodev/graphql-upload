@@ -38,7 +38,8 @@
         "laminas/laminas-log": "^2.12",
         "laminas/laminas-diactoros": "^2.3",
         "ecodev/graphql-doctrine": "^6.4",
-        "laminas/laminas-validator": "^2.13"
+        "laminas/laminas-validator": "^2.13",
+        "laminas/laminas-permissions-acl": "^2.7"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
