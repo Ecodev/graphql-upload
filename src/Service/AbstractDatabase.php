@@ -70,15 +70,9 @@ STRING;
         $database = $dbConfig['dbname'];
         $password = $dbConfig['password'];
 
-        $dumpFile = realpath($dumpFile);
-        if ($dumpFile === false) {
-            throw new \Exception('Cannot find absolute path for file: ' . $dumpFile);
-        }
+        $dumpFile = self::absolutePath($dumpFile);
 
         echo "loading dump $dumpFile...\n";
-        if (!is_readable($dumpFile)) {
-            throw new \Exception("Cannot read dump file \"$dumpFile\"");
-        }
 
         self::executeLocalCommand(PHP_BINARY . ' ./vendor/bin/doctrine orm:schema-tool:drop --ansi --full-database --force');
         self::executeLocalCommand("gunzip -c \"$dumpFile\" | mysql --user=$username --password=$password --host=$host $database");
@@ -146,7 +140,8 @@ STRING;
      */
     private static function importFile(string $file): void
     {
-        $file = realpath($file);
+        $file = self::absolutePath($file);
+
         echo 'importing ' . $file . "\n";
         $connection = _em()->getConnection();
         $database = $connection->getDatabase();
@@ -156,5 +151,19 @@ STRING;
         $importCommand = "cat $file | mysql -u $username $password $database";
 
         self::executeLocalCommand($importCommand);
+    }
+
+    private static function absolutePath(string $file): string
+    {
+        $absolutePath = realpath($file);
+        if ($absolutePath === false) {
+            throw new \Exception('Cannot find absolute path for file: ' . $file);
+        }
+
+        if (!is_readable($absolutePath)) {
+            throw new \Exception("Cannot read dump file \"$absolutePath\"");
+        }
+
+        return $absolutePath;
     }
 }
