@@ -11,7 +11,7 @@ use Laminas\Permissions\Acl\Assertion\AssertionInterface;
 use Laminas\Permissions\Acl\Resource\ResourceInterface;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 
-class IsOwner implements AssertionInterface
+final class IsOwner implements AssertionInterface
 {
     /**
      * Assert that the object belongs to the current user

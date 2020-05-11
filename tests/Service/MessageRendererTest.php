@@ -10,7 +10,7 @@ use Laminas\View\Model\ViewModel;
 use Laminas\View\Renderer\RendererInterface;
 use PHPUnit\Framework\TestCase;
 
-class MessageRendererTest extends TestCase
+final class MessageRendererTest extends TestCase
 {
     public function testRender(): void
     {

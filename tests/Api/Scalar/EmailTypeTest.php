@@ -8,7 +8,7 @@ use Ecodev\Felix\Api\Scalar\EmailType;
 use GraphQL\Language\AST\StringValueNode;
 use PHPUnit\Framework\TestCase;
 
-class EmailTypeTest extends TestCase
+final class EmailTypeTest extends TestCase
 {
     /**
      * @dataProvider providerEmails

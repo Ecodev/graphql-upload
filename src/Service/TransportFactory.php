@@ -11,7 +11,7 @@ use Laminas\Mail\Transport\SmtpOptions;
 use Laminas\Mail\Transport\TransportInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class TransportFactory implements FactoryInterface
+final class TransportFactory implements FactoryInterface
 {
     /**
      * Return a configured mail transport

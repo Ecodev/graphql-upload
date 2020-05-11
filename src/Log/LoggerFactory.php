@@ -9,7 +9,7 @@ use Laminas\Log\Logger;
 use Laminas\Log\Writer\Stream;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class LoggerFactory implements FactoryInterface
+final class LoggerFactory implements FactoryInterface
 {
     /**
      * @var null|Logger

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\IntegerType;
 use Money\Money;
 
-class EURType extends IntegerType
+final class EURType extends IntegerType
 {
     public function getName()
     {

@@ -11,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class GraphQLAction implements MiddlewareInterface
+final class GraphQLAction implements MiddlewareInterface
 {
     /**
      * @var Server

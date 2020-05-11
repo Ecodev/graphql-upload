@@ -15,7 +15,7 @@ use GraphQL\Type\Schema;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class FilteredFieldResolverTest extends TestCase
+final class FilteredFieldResolverTest extends TestCase
 {
     public function providerLoad(): array
     {

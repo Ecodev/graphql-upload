@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Scalar;
 
-class ColorType extends AbstractStringBasedType
+final class ColorType extends AbstractStringBasedType
 {
     /**
      * @var string

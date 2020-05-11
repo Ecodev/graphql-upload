@@ -8,7 +8,7 @@ use Ecodev\Felix\Utility;
 use EcodevTests\Felix\Blog\Model\User;
 use GraphQL\Doctrine\Definition\EntityID;
 
-class UtilityTest extends \PHPUnit\Framework\TestCase
+final class UtilityTest extends \PHPUnit\Framework\TestCase
 {
     public function testGetShortClassName(): void
     {

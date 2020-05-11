@@ -14,7 +14,7 @@ use EcodevTests\Felix\Traits\TestWithTypes;
 use GraphQL\Doctrine\Factory\UniqueNameFactory;
 use GraphQL\Type\Definition\Type;
 
-class SearchOperatorTypeTest extends OperatorType
+final class SearchOperatorTypeTest extends OperatorType
 {
     use TestWithTypes;
 

@@ -7,7 +7,7 @@ namespace EcodevTests\Felix\Model\Traits;
 use Ecodev\Felix\Model\Traits\Image;
 use PHPUnit\Framework\TestCase;
 
-class ImageTest extends TestCase
+final class ImageTest extends TestCase
 {
     /**
      * @var \Ecodev\Felix\Model\Image

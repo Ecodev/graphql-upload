@@ -8,7 +8,7 @@ use Ecodev\Felix\Model\CurrentUser;
 use Ecodev\Felix\Repository\LogRepository;
 use Laminas\Log\Writer\AbstractWriter;
 
-class DbWriter extends AbstractWriter
+final class DbWriter extends AbstractWriter
 {
     /**
      * @var LogRepository

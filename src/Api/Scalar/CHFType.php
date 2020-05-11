@@ -6,7 +6,7 @@ namespace Ecodev\Felix\Api\Scalar;
 
 use Money\Money;
 
-class CHFType extends AbstractMoneyType
+final class CHFType extends AbstractMoneyType
 {
     /**
      * @var string

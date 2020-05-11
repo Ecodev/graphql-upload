@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Scalar;
 
-class TokenType extends AbstractStringBasedType
+final class TokenType extends AbstractStringBasedType
 {
     /**
      * @var string

@@ -11,7 +11,7 @@ use GraphQL\Language\AST\StringValueNode;
 use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\Utils;
 
-class DateType extends ScalarType
+final class DateType extends ScalarType
 {
     /**
      * @var string

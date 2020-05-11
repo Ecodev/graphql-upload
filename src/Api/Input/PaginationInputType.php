@@ -7,7 +7,7 @@ namespace Ecodev\Felix\Api\Input;
 use GraphQL\Doctrine\Types;
 use GraphQL\Type\Definition\InputObjectType;
 
-class PaginationInputType extends InputObjectType
+final class PaginationInputType extends InputObjectType
 {
     public static function build(Types $types): array
     {

@@ -10,7 +10,7 @@ use Laminas\Permissions\Acl\Assertion\AssertionInterface;
 use Laminas\Permissions\Acl\Resource\ResourceInterface;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 
-class IsMyself implements AssertionInterface
+final class IsMyself implements AssertionInterface
 {
     /**
      * Assert that the user is the current user himself

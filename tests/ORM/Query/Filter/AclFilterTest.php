@@ -11,7 +11,7 @@ use EcodevTests\Felix\Blog\Model\User;
 use EcodevTests\Felix\Traits\TestWithEntityManager;
 use PHPUnit\Framework\TestCase;
 
-class AclFilterTest extends TestCase
+final class AclFilterTest extends TestCase
 {
     use TestWithEntityManager;
 

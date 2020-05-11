@@ -11,7 +11,7 @@ use Laminas\View\Renderer\PhpRenderer;
 use Laminas\View\Renderer\RendererInterface;
 use Laminas\View\Resolver\TemplatePathStack;
 
-class RendererFactory implements FactoryInterface
+final class RendererFactory implements FactoryInterface
 {
     /**
      * Return a configured mailer

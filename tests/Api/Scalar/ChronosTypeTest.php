@@ -7,7 +7,7 @@ namespace EcodevTests\Felix\Api\Scalar;
 use Ecodev\Felix\Api\Scalar\ChronosType;
 use PHPUnit\Framework\TestCase;
 
-class ChronosTypeTest extends TestCase
+final class ChronosTypeTest extends TestCase
 {
     /**
      * @var string

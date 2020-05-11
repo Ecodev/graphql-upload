@@ -8,7 +8,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Ecodev\Felix\DBAL\Types\EnumType;
 use PHPUnit\Framework\TestCase;
 
-class EnumTypeTest extends TestCase
+final class EnumTypeTest extends TestCase
 {
     /**
      * @var EnumType

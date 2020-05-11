@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Scalar;
 
-class UrlType extends AbstractStringBasedType
+final class UrlType extends AbstractStringBasedType
 {
     /**
      * Validate an URL

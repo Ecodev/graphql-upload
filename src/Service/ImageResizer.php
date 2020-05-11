@@ -11,7 +11,7 @@ use Imagine\Image\ImagineInterface;
 /**
  * Service to resize image's images
  */
-class ImageResizer
+final class ImageResizer
 {
     private const CACHE_IMAGE_PATH = 'data/cache/images/';
 

@@ -15,7 +15,7 @@ use Ecodev\Felix\Repository\LimitedAccessSubQuery;
  *
  * Most objects will be filtered with subqueries because they implement `LimitedAccessSubQuery`
  */
-class AclFilter extends SQLFilter
+final class AclFilter extends SQLFilter
 {
     /**
      * @var null|User

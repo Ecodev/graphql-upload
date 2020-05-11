@@ -14,7 +14,7 @@ use Laminas\Validator\EmailAddress;
  * in DB and thus can never be empty string to indicate absence of email. So we simplify
  * the client work by accepting empty string and transparently transforming into a null value.
  */
-class EmailType extends AbstractStringBasedType
+final class EmailType extends AbstractStringBasedType
 {
     /**
      * Validate a email

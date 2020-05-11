@@ -18,7 +18,7 @@ use Laminas\Permissions\Acl\Resource\GenericResource;
  *     $r = new ModelResource(Question::class, $question);
  *     $question = $r->getInstance();
  */
-class ModelResource extends GenericResource
+final class ModelResource extends GenericResource
 {
     /**
      * Unique id of the instance of resource

@@ -9,7 +9,7 @@ use EcodevTests\Felix\Blog\Model\User;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class ModelResourceTest extends TestCase
+final class ModelResourceTest extends TestCase
 {
     public function testConstructorVariants(): void
     {

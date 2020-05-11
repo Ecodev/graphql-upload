@@ -8,7 +8,7 @@ use Ecodev\Felix\Service\Bvr;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
-class BvrTest extends TestCase
+final class BvrTest extends TestCase
 {
     /**
      * @dataProvider providerGetReferenceNumber

@@ -10,7 +10,7 @@ use Ecodev\Felix\Model\CurrentUser;
 use EcodevTests\Felix\Blog\Model\User;
 use PHPUnit\Framework\TestCase;
 
-class AclTest extends TestCase
+final class AclTest extends TestCase
 {
     protected function tearDown(): void
     {

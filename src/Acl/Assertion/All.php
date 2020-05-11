@@ -9,7 +9,7 @@ use Laminas\Permissions\Acl\Assertion\AssertionInterface;
 use Laminas\Permissions\Acl\Resource\ResourceInterface;
 use Laminas\Permissions\Acl\Role\RoleInterface;
 
-class All implements AssertionInterface
+final class All implements AssertionInterface
 {
     /**
      * @var AssertionInterface[]

@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class FileAction extends AbstractAction
+final class FileAction extends AbstractAction
 {
     /**
      * @var ObjectRepository

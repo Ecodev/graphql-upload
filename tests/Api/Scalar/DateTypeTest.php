@@ -8,7 +8,7 @@ use Cake\Chronos\Date;
 use Ecodev\Felix\Api\Scalar\DateType;
 use PHPUnit\Framework\TestCase;
 
-class DateTypeTest extends TestCase
+final class DateTypeTest extends TestCase
 {
     public function testTimezoneIsIgnored(): void
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix;
 
-class Debug
+final class Debug
 {
     /**
      * Export variables omitting array keys that are strictly numeric

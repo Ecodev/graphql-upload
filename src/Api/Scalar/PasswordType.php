@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Scalar;
 
-class PasswordType extends AbstractStringBasedType
+final class PasswordType extends AbstractStringBasedType
 {
     /**
      * @var string

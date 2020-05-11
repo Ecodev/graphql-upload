@@ -6,7 +6,7 @@ namespace Ecodev\Felix\Api\Output;
 
 use GraphQL\Type\Definition\ObjectType;
 
-class PermissionsType extends ObjectType
+final class PermissionsType extends ObjectType
 {
     public function __construct()
     {

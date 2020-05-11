@@ -12,7 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ImageAction extends AbstractAction
+final class ImageAction extends AbstractAction
 {
     /**
      * @var ObjectRepository

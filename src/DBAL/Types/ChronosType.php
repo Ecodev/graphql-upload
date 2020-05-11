@@ -7,7 +7,7 @@ namespace Ecodev\Felix\DBAL\Types;
 use Cake\Chronos\Chronos;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
-class ChronosType extends \Doctrine\DBAL\Types\DateTimeType
+final class ChronosType extends \Doctrine\DBAL\Types\DateTimeType
 {
     /**
      * {@inheritdoc}

@@ -8,7 +8,7 @@ use Ecodev\Felix\Api\Scalar\ColorType;
 use GraphQL\Language\AST\StringValueNode;
 use PHPUnit\Framework\TestCase;
 
-class ColorTypeTest extends TestCase
+final class ColorTypeTest extends TestCase
 {
     /**
      * @dataProvider providerColors

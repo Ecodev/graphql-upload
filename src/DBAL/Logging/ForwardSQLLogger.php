@@ -10,7 +10,7 @@ use Doctrine\DBAL\Logging\SQLLogger;
 /**
  * A SQL logger that forward logs to Laminas Log
  */
-class ForwardSQLLogger extends DebugStack implements SQLLogger
+final class ForwardSQLLogger extends DebugStack implements SQLLogger
 {
     public function stopQuery(): void
     {

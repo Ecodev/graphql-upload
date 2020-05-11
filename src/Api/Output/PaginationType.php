@@ -6,7 +6,7 @@ namespace Ecodev\Felix\Api\Output;
 
 use GraphQL\Type\Definition\ObjectType;
 
-class PaginationType extends ObjectType
+final class PaginationType extends ObjectType
 {
     /**
      * PaginationType constructor.

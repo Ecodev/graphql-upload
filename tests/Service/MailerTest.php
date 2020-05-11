@@ -13,7 +13,7 @@ use Laminas\Mail;
 use Laminas\Mail\Address;
 use Laminas\Mail\Transport\TransportInterface;
 
-class MailerTest extends \PHPUnit\Framework\TestCase
+final class MailerTest extends \PHPUnit\Framework\TestCase
 {
     private function createMockMailer(): Mailer
     {

@@ -31,7 +31,7 @@ use Money\Money;
  *
  * @see https://www.postfinance.ch/content/dam/pfch/doc/cust/download/inpayslip_isr_man_fr.pdf
  */
-class Bvr
+final class Bvr
 {
     private const TABLE = [
         [0, 9, 4, 6, 8, 2, 7, 1, 3, 5],

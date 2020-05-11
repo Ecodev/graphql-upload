@@ -8,7 +8,7 @@ use Imagine\Image\ImagineInterface;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class ImageResizerFactory implements FactoryInterface
+final class ImageResizerFactory implements FactoryInterface
 {
     /**
      * Return the image service to be used to resize images

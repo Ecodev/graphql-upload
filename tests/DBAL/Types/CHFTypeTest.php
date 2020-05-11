@@ -10,7 +10,7 @@ use Ecodev\Felix\DBAL\Types\CHFType;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
-class CHFTypeTest extends TestCase
+final class CHFTypeTest extends TestCase
 {
     /**
      * @var CHFType

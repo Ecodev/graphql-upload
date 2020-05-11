@@ -8,7 +8,7 @@ use Imagine\Image\ImagineInterface;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class ImagineFactory implements FactoryInterface
+final class ImagineFactory implements FactoryInterface
 {
     /**
      * Return the preferred driver available on this system

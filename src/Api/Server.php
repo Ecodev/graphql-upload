@@ -18,7 +18,7 @@ use Throwable;
 /**
  * A thin wrapper to serve GraphQL via HTTP or CLI
  */
-class Server
+final class Server
 {
     /**
      * @var StandardServer

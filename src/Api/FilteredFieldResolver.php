@@ -12,7 +12,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 /**
  * A field resolver that will ensure that filtered entity are never returned via getter
  */
-class FilteredFieldResolver
+final class FilteredFieldResolver
 {
     /**
      * @var DefaultFieldResolver

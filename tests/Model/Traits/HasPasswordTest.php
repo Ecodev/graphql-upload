@@ -8,7 +8,7 @@ use Cake\Chronos\Chronos;
 use Ecodev\Felix\Model\Traits\HasPassword;
 use PHPUnit\Framework\TestCase;
 
-class HasPasswordTest extends TestCase
+final class HasPasswordTest extends TestCase
 {
     /**
      * @var \Ecodev\Felix\Model\HasPassword
