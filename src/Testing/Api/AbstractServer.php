@@ -25,6 +25,11 @@ abstract class AbstractServer extends TestCase
 
     abstract protected function createSchema(): Schema;
 
+    protected function createServer(bool $debug): Server
+    {
+        return new Server($this->createSchema(), $debug);
+    }
+
     public function testSchemaIsValid(): void
     {
         $schema = $this->createSchema();
@@ -49,7 +54,7 @@ abstract class AbstractServer extends TestCase
         $debug = false;
 
         // Configure server
-        $server = new Server($this->createSchema(), $debug);
+        $server = $this->createServer($debug);
 
         // Execute query
         $result = $server->execute($request);

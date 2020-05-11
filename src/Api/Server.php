@@ -18,7 +18,7 @@ use Throwable;
 /**
  * A thin wrapper to serve GraphQL via HTTP or CLI
  */
-final class Server
+class Server
 {
     /**
      * @var StandardServer
@@ -30,7 +30,7 @@ final class Server
      */
     private $config;
 
-    public function __construct(Schema $schema, bool $debug)
+    public function __construct(Schema $schema, bool $debug, array $rootValue = [])
     {
         GraphQL::setDefaultFieldResolver(new FilteredFieldResolver());
         $this->config = ServerConfig::create([
@@ -45,7 +45,9 @@ final class Server
 
                 return $result;
             },
+            'rootValue' => $rootValue,
         ]);
+
         $this->server = new StandardServer($this->config);
     }
 
