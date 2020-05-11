@@ -32,10 +32,13 @@ final class MessageRenderer
     /**
      * Render a message by templating
      */
-    public function render(?User $user, string $email, string $subject, string $type, array $mailParams, array $layoutParams = []): string
+    public function render(?User $user, string $email, string $subject, string $type, array $mailParams, array $layoutParams = [], ?string $hostname = null): string
     {
+        // Override hostname if given
+        $hostname = $hostname ?? $this->hostname;
+
         // First render the view
-        $serverUrl = 'https://' . $this->hostname;
+        $serverUrl = 'https://' . $hostname;
         $model = new ViewModel($mailParams);
         $model->setTemplate(str_replace('_', '-', $type));
         $model->setVariable('email', $email);
@@ -50,7 +53,7 @@ final class MessageRenderer
         $layoutModel->setVariable('subject', $subject);
         $layoutModel->setVariable('user', $user);
         $layoutModel->setVariable('serverUrl', $serverUrl);
-        $layoutModel->setVariable('hostname', $this->hostname);
+        $layoutModel->setVariable('hostname', $hostname);
         $content = $this->viewRenderer->render($layoutModel);
 
         return $content;
