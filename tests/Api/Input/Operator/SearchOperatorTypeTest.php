@@ -31,7 +31,7 @@ final class SearchOperatorTypeTest extends OperatorType
 
             protected function getSearchableJoinedEntities(): array
             {
-                return [Post::class => 'user'];
+                return [Post::class => ['user']];
             }
         };
 

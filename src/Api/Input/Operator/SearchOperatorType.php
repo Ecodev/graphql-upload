@@ -68,6 +68,8 @@ abstract class SearchOperatorType extends AbstractOperator
      * Map one class to one joined entity that is searchable
      *
      * This list should be kept as small as possible
+     *
+     * @return string[][]
      */
     abstract protected function getSearchableJoinedEntities(): array;
 
@@ -81,12 +83,14 @@ abstract class SearchOperatorType extends AbstractOperator
         $config = $this->getSearchableJoinedEntities();
 
         $fields = [];
-        foreach ($config as $class => $fieldName) {
+        foreach ($config as $class => $fieldNames) {
             if (is_a($metadata->getName(), $class, true)) {
-                $fields = array_merge(
-                    $fields,
-                    $this->searchOnJoinedEntity($uniqueNameFactory, $metadata, $queryBuilder, $alias, $fieldName)
-                );
+                foreach ($fieldNames as $fieldName) {
+                    $fields = array_merge(
+                        $fields,
+                        $this->searchOnJoinedEntity($uniqueNameFactory, $metadata, $queryBuilder, $alias, $fieldName)
+                    );
+                }
             }
         }
 
