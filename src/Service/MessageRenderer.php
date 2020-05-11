@@ -40,7 +40,7 @@ final class MessageRenderer
      *
      * @return string
      */
-    public function render(?User $user, string $email, string $subject, string $type, array $mailParams): string
+    public function render(?User $user, string $email, string $subject, string $type, array $mailParams, array $layoutParams = []): string
     {
         // First render the view
         $serverUrl = 'https://' . $this->hostname;
@@ -52,8 +52,9 @@ final class MessageRenderer
         $partialContent = $this->viewRenderer->render($model);
 
         // Then inject it into layout
-        $layoutModel = new ViewModel([$model->captureTo() => $partialContent]);
+        $layoutModel = new ViewModel($layoutParams);
         $layoutModel->setTemplate('layout');
+        $layoutModel->setVariable($model->captureTo(), $partialContent);
         $layoutModel->setVariable('subject', $subject);
         $layoutModel->setVariable('user', $user);
         $layoutModel->setVariable('serverUrl', $serverUrl);

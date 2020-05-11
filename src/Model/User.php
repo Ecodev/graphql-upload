@@ -7,6 +7,11 @@ namespace Ecodev\Felix\Model;
 interface User extends Model
 {
     /**
+     * Get login (eg: johndoe)
+     */
+    public function getLogin(): ?string;
+
+    /**
      * Get full name
      *
      * @return string

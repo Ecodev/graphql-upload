@@ -18,7 +18,8 @@ final class MessageRendererTest extends TestCase
         $email = 'foo@example.com';
         $subject = 'my subject';
         $type = 'my_type';
-        $mailParams = ['foo' => 'bar'];
+        $layoutParams = ['fooLayout' => 'barLayout'];
+        $mailParams = ['fooMail' => 'barMail'];
 
         $viewRenderer = $this->createMock(RendererInterface::class);
         $viewRenderer->expects($this->exactly(2))
@@ -27,7 +28,7 @@ final class MessageRendererTest extends TestCase
                 [
                     self::callback(function (ViewModel $viewModel) use ($user) {
                         $variables = [
-                            'foo' => 'bar',
+                            'fooMail' => 'barMail',
                             'email' => 'foo@example.com',
                             'user' => $user,
                             'serverUrl' => 'https://example.com',
@@ -39,6 +40,7 @@ final class MessageRendererTest extends TestCase
                 ], [
                     self::callback(function (ViewModel $viewModel) use ($user) {
                         $variables = [
+                            'fooLayout' => 'barLayout',
                             'content' => 'mocked-rendered-view',
                             'subject' => 'my subject',
                             'user' => $user,
@@ -54,6 +56,6 @@ final class MessageRendererTest extends TestCase
 
         $messageRenderer = new MessageRenderer($viewRenderer, 'example.com');
 
-        $messageRenderer->render($user, $email, $subject, $type, $mailParams);
+        $messageRenderer->render($user, $email, $subject, $type, $mailParams, $layoutParams);
     }
 }

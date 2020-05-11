@@ -63,4 +63,9 @@ final class User extends AbstractModel implements \Ecodev\Felix\Model\User
     {
         return 'member';
     }
+
+    public function getLogin(): ?string
+    {
+        return $this->name;
+    }
 }

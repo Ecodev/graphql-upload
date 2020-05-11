@@ -54,7 +54,7 @@ class Mailer
     /**
      * @var string
      */
-    private $fromName;
+    protected $fromName;
 
     /**
      * @var MessageRepository
@@ -65,9 +65,9 @@ class Mailer
         EntityManager $entityManager,
         MessageRepository $messageRepository,
         TransportInterface $transport,
+        string $phpPath,
         ?string $toEmailOverride,
         string $fromEmail,
-        string $phpPath,
         string $fromName
     ) {
         $this->entityManager = $entityManager;
@@ -142,7 +142,7 @@ class Mailer
      *
      * @return Mail\Message
      */
-    private function modelMessageToMailMessage(Message $modelMessage): Mail\Message
+    protected function modelMessageToMailMessage(Message $modelMessage): Mail\Message
     {
         // set Mime type html
         $htmlPart = new MimePart($modelMessage->getBody());

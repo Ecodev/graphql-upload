@@ -58,5 +58,13 @@ interface Message extends Model
      */
     public function setEmail(string $email): void;
 
+    /**
+     * Get recipient
+     */
     public function getRecipient(): ?User;
+
+    /**
+     * Get type
+     */
+    public function getType(): string;
 }

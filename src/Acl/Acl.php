@@ -94,7 +94,7 @@ class Acl extends \Laminas\Permissions\Acl\Acl
         $resource = $resource->getName();
 
         $user = CurrentUser::get();
-        $userName = $user ? 'User "' . $user->getName() . '"' : 'Non-logged user';
+        $userName = $user ? 'User "' . $user->getLogin() . '"' : 'Non-logged user';
         $privilege = $privilege === null ? 'NULL' : $privilege;
 
         $message = "$userName with role $role is not allowed on resource \"$resource\" with privilege \"$privilege\"";

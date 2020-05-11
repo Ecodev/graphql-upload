@@ -63,4 +63,16 @@ abstract class Utility
 
         return $data;
     }
+
+    public static function unique(array $array): array
+    {
+        $result = [];
+        foreach ($array as $value) {
+            if (!in_array($value, $result, true)) {
+                $result[] = $value;
+            }
+        }
+
+        return $result;
+    }
 }

@@ -32,9 +32,9 @@ final class MailerTest extends \PHPUnit\Framework\TestCase
             $entityManager,
             $messageRepository,
             $transport,
+            '/user/bin/php',
             null,
             'noreply@example.com',
-            '/user/bin/php',
             'Epicerio'
         );
 
@@ -139,7 +139,11 @@ final class MailerTest extends \PHPUnit\Framework\TestCase
 
             public function setEmail(string $email): void
             {
-                // TODO: Implement setEmail() method.
+            }
+
+            public function getType(): string
+            {
+                return 'my_type';
             }
         };
     }
