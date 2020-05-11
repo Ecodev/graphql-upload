@@ -6,17 +6,20 @@ namespace Ecodev\Felix\Service;
 
 use Imagine\Image\ImagineInterface;
 use Interop\Container\ContainerInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
-class ImageResizerFactory
+class ImageResizerFactory implements FactoryInterface
 {
     /**
      * Return the image service to be used to resize images
      *
      * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param null|array $options
      *
      * @return ImageResizer
      */
-    public function __invoke(ContainerInterface $container): ImageResizer
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): ImageResizer
     {
         $imagine = $container->get(ImagineInterface::class);
 

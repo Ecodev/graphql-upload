@@ -23,7 +23,7 @@ class LoggerFactory implements FactoryInterface
      *
      * @return Logger
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Logger
     {
         if (!$this->logger) {
             // Log to file

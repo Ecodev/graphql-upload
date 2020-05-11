@@ -4,36 +4,29 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Service;
 
-use Doctrine\ORM\EntityManager;
 use Ecodev\Felix\Model\User;
 use Laminas\View\Model\ViewModel;
 use Laminas\View\Renderer\RendererInterface;
 
 /**
- * Service to queue new message for pre-defined purposes
+ * Service to render message to HTML
  */
-class MessageQueuer
+final class MessageRenderer
 {
     /**
-     * @var EntityManager
+     * @var RendererInterface
      */
-    protected $entityManager;
+    private $viewRenderer;
 
     /**
      * @var string
      */
     private $hostname;
 
-    /**
-     * @var RendererInterface
-     */
-    private $viewRenderer;
-
-    public function __construct(EntityManager $entityManager, RendererInterface $viewRenderer, string $hostname)
+    public function __construct(RendererInterface $viewRenderer, string $hostname)
     {
-        $this->entityManager = $entityManager;
-        $this->hostname = $hostname;
         $this->viewRenderer = $viewRenderer;
+        $this->hostname = $hostname;
     }
 
     /**
@@ -47,7 +40,7 @@ class MessageQueuer
      *
      * @return string
      */
-    protected function renderMessage(?User $user, string $email, string $subject, string $type, array $mailParams): string
+    public function render(?User $user, string $email, string $subject, string $type, array $mailParams): string
     {
         // First render the view
         $serverUrl = 'https://' . $this->hostname;
