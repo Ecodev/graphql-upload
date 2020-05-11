@@ -34,11 +34,6 @@ class Acl extends \Laminas\Permissions\Acl\Acl
      * Return whether the current user is allowed to do something
      *
      * This should be the main method to do all ACL checks.
-     *
-     * @param Model $model
-     * @param string $privilege
-     *
-     * @return bool
      */
     public function isCurrentUserAllowed(Model $model, string $privilege): bool
     {
@@ -108,8 +103,6 @@ class Acl extends \Laminas\Permissions\Acl\Acl
 
     /**
      * Returns the message explaining the last denial, if any
-     *
-     * @return null|string
      */
     public function getLastDenialMessage(): ?string
     {

@@ -19,8 +19,6 @@ trait HasUrl
 
     /**
      * Set url
-     *
-     * @param string $url
      */
     public function setUrl(string $url): void
     {
@@ -29,8 +27,6 @@ trait HasUrl
 
     /**
      * Get url
-     *
-     * @return string
      */
     public function getUrl(): string
     {

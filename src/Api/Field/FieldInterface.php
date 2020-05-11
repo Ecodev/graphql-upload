@@ -11,8 +11,6 @@ interface FieldInterface
 {
     /**
      * Return the single field configuration, including its name
-     *
-     * @return array
      */
     public static function build(): array;
 }

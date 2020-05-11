@@ -48,11 +48,6 @@ final class Bvr
 
     /**
      * Get the reference number, including the verification digit
-     *
-     * @param string $bankAccount
-     * @param string $customId
-     *
-     * @return string
      */
     public static function getReferenceNumber(string $bankAccount, string $customId): string
     {
@@ -70,10 +65,6 @@ final class Bvr
 
     /**
      * Extract the custom ID as string from a valid reference number
-     *
-     * @param string $referenceNumber
-     *
-     * @return string
      */
     public static function extractCustomId(string $referenceNumber): string
     {
@@ -92,13 +83,6 @@ final class Bvr
 
     /**
      * Get the full encoding line
-     *
-     * @param string $bankAccount
-     * @param string $customId
-     * @param string $postAccount
-     * @param null|Money $amount
-     *
-     * @return string
      */
     public static function getEncodingLine(string $bankAccount, string $customId, string $postAccount, ?Money $amount = null): string
     {
@@ -156,10 +140,6 @@ final class Bvr
 
     /**
      * Get type of document and amount
-     *
-     * @param null|Money $amount
-     *
-     * @return string
      */
     private static function getType(?Money $amount): string
     {

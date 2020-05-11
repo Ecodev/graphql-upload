@@ -16,8 +16,6 @@ final class CurrentUser
 
     /**
      * Set currently logged in user
-     *
-     * @param null|User $user
      */
     public static function set(?User $user): void
     {
@@ -26,8 +24,6 @@ final class CurrentUser
 
     /**
      * Returns currently logged user or null
-     *
-     * @return null|User
      */
     public static function get(): ?User
     {

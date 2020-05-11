@@ -20,11 +20,6 @@ final class SearchOperatorTypeTest extends OperatorType
 
     /**
      * @dataProvider providerSearch
-     *
-     * @param string $class
-     * @param string $term
-     * @param int $expectedJoinCount
-     * @param string $expected
      */
     public function testSearch(string $class, string $term, int $expectedJoinCount, string $expected): void
     {

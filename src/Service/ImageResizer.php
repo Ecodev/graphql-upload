@@ -27,11 +27,6 @@ final class ImageResizer
 
     /**
      * Resize image as JPG and return the path to the resized version
-     *
-     * @param Image $image
-     * @param int $maxHeight
-     *
-     * @return string
      */
     public function resize(Image $image, int $maxHeight): string
     {

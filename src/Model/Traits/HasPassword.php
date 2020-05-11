@@ -36,8 +36,6 @@ trait HasPassword
 
     /**
      * Hash and change the user password
-     *
-     * @param string $password
      */
     public function setPassword(string $password): void
     {
@@ -61,8 +59,6 @@ trait HasPassword
      * Returns the hashed password
      *
      * @API\Exclude
-     *
-     * @return string
      */
     public function getPassword(): string
     {
@@ -93,8 +89,6 @@ trait HasPassword
      * Check if token is valid.
      *
      * @API\Exclude
-     *
-     * @return bool
      */
     public function isTokenValid(): bool
     {

@@ -31,10 +31,6 @@ abstract class Format
 
     /**
      * Shortcut to format money
-     *
-     * @param Money $money
-     *
-     * @return string
      */
     public static function money(Money $money): string
     {

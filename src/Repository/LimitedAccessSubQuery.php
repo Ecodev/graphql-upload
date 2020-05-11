@@ -15,10 +15,6 @@ interface LimitedAccessSubQuery
      * Returns pure SQL to get ID of all objects that are accessible to given user.
      *
      * If no filter should be applied, you should return empty string ''
-     *
-     * @param null|User $user
-     *
-     * @return string
      */
     public function getAccessibleSubQuery(?\Ecodev\Felix\Model\User $user): string;
 }

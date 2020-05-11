@@ -15,8 +15,6 @@ trait HasDescription
 
     /**
      * Set description
-     *
-     * @param string $description
      */
     public function setDescription(string $description): void
     {
@@ -25,8 +23,6 @@ trait HasDescription
 
     /**
      * Get description
-     *
-     * @return string
      */
     public function getDescription(): string
     {

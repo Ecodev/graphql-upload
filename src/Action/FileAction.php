@@ -25,11 +25,6 @@ final class FileAction extends AbstractAction
 
     /**
      * Serve a downloaded file from disk
-     *
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

@@ -21,10 +21,8 @@ final class FormatTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider truncateProvider
-     *
-     * @param string $expected
      */
-    public function testTruncate(array $args, $expected): void
+    public function testTruncate(array $args, string $expected): void
     {
         $actual = Format::truncate(...$args);
         self::assertSame($expected, $actual);

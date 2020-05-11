@@ -15,8 +15,6 @@ trait HasInternalRemarks
 
     /**
      * Set internalRemarks
-     *
-     * @param string $internalRemarks
      */
     public function setInternalRemarks(string $internalRemarks): void
     {
@@ -25,8 +23,6 @@ trait HasInternalRemarks
 
     /**
      * Get internalRemarks
-     *
-     * @return string
      */
     public function getInternalRemarks(): string
     {

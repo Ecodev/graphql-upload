@@ -43,17 +43,11 @@ final class User extends AbstractModel implements \Ecodev\Felix\Model\User
      */
     private $posts;
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;

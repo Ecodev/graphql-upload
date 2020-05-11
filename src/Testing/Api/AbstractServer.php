@@ -20,8 +20,6 @@ abstract class AbstractServer extends TestCase
 
     /**
      * Should get user and call User::setCurrent()
-     *
-     * @param null|string $user
      */
     abstract protected function setCurrentUser(?string $user): void;
 
@@ -37,11 +35,6 @@ abstract class AbstractServer extends TestCase
 
     /**
      * @dataProvider providerQuery
-     *
-     * @param null|string $user
-     * @param ServerRequest $request
-     * @param array $expected
-     * @param null|callable $dataPreparator
      */
     public function testQuery(?string $user, ServerRequest $request, array $expected, ?callable $dataPreparator = null): void
     {

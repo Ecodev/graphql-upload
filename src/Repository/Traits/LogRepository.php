@@ -31,8 +31,6 @@ trait LogRepository
 
     /**
      * This should NOT be called directly, instead use `_log()` to log stuff
-     *
-     * @param array $event
      */
     public function log(array $event): void
     {
@@ -44,8 +42,6 @@ trait LogRepository
 
     /**
      * Returns whether the current IP often failed to login
-     *
-     * @return bool
      */
     public function loginFailedOften(): bool
     {

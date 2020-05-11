@@ -32,11 +32,6 @@ final class ImageAction extends AbstractAction
 
     /**
      * Serve an image from disk, with optional dynamic resizing
-     *
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     *
-     * @return ResponseInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {

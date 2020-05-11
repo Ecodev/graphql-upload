@@ -9,8 +9,6 @@ use Laminas\Log\LoggerInterface;
 
 /**
  * Returns the type registry
- *
- * @return Types
  */
 function _types(): Types
 {
@@ -21,8 +19,6 @@ function _types(): Types
 
 /**
  * Returns the EM
- *
- * @return EntityManager
  */
 function _em(): EntityManager
 {
@@ -33,8 +29,6 @@ function _em(): EntityManager
 
 /**
  * Returns logger
- *
- * @return LoggerInterface
  */
 function _log(): LoggerInterface
 {

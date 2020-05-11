@@ -56,8 +56,6 @@ final class DbWriter extends AbstractWriter
 
     /**
      * Retrieve dynamic information from environment to be logged.
-     *
-     * @return array
      */
     private function getEnvData(): array
     {
@@ -89,8 +87,6 @@ final class DbWriter extends AbstractWriter
 
     /**
      * Returns the backtrace excluding the most recent calls to this function so we only get the interesting parts
-     *
-     * @return string
      */
     private function getStacktrace(): string
     {

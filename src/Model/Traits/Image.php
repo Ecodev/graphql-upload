@@ -51,8 +51,6 @@ trait Image
 
     /**
      * Get image width
-     *
-     * @return int
      */
     public function getWidth(): int
     {
@@ -63,8 +61,6 @@ trait Image
      * Set image width
      *
      * @API\Exclude
-     *
-     * @param int $width
      */
     public function setWidth(int $width): void
     {
@@ -73,8 +69,6 @@ trait Image
 
     /**
      * Get image height
-     *
-     * @return int
      */
     public function getHeight(): int
     {
@@ -85,8 +79,6 @@ trait Image
      * Set image height
      *
      * @API\Exclude
-     *
-     * @param int $height
      */
     public function setHeight(int $height): void
     {
@@ -95,10 +87,6 @@ trait Image
 
     /**
      * Set the file
-     *
-     * @param UploadedFileInterface $file
-     *
-     * @throws \Exception
      */
     public function setFile(UploadedFileInterface $file): void
     {

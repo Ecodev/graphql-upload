@@ -34,17 +34,11 @@ abstract class AbstractModel implements Model, HasOwner
         return $this->id;
     }
 
-    /**
-     * @return null|User
-     */
     public function getOwner(): ?\Ecodev\Felix\Model\User
     {
         return $this->owner;
     }
 
-    /**
-     * @param null|User $owner
-     */
     public function setOwner(?User $owner): void
     {
         $this->owner = $owner;

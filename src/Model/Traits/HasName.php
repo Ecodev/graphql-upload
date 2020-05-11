@@ -19,28 +19,22 @@ trait HasName
 
     /**
      * Constructor
-     *
-     * @param string $name
      */
-    public function __construct($name = '')
+    public function __construct(string $name = '')
     {
         $this->setName($name);
     }
 
     /**
      * Set name
-     *
-     * @param string $name
      */
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
     /**
      * Get name
-     *
-     * @return string
      */
     public function getName(): string
     {

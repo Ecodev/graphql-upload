@@ -83,8 +83,6 @@ class Mailer
      * Send a message asynchronously in a separate process.
      *
      * This should be the preferred way to send a message, unless if we are the cron.
-     *
-     * @param Message $message
      */
     public function sendMessageAsync(Message $message): void
     {
@@ -106,8 +104,6 @@ class Mailer
 
     /**
      * Send a message
-     *
-     * @param Message $message
      */
     public function sendMessage(Message $message): void
     {
@@ -137,10 +133,6 @@ class Mailer
 
     /**
      * Convert our model message to a mail message
-     *
-     * @param Message $modelMessage
-     *
-     * @return Mail\Message
      */
     protected function modelMessageToMailMessage(Message $modelMessage): Mail\Message
     {

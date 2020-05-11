@@ -10,11 +10,6 @@ use Money\Money;
 
 abstract class AbstractMoneyType extends IntegerType
 {
-    /**
-     * @param string $value
-     *
-     * @return Money
-     */
     abstract protected function createMoney(string $value): Money;
 
     public function getName()

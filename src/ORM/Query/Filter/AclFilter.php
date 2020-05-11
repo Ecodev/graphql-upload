@@ -71,8 +71,6 @@ final class AclFilter extends SQLFilter
 
     /**
      * Enable or disable the filter
-     *
-     * @param bool $enabled
      */
     private function setEnabled(bool $enabled): void
     {
@@ -107,8 +105,6 @@ final class AclFilter extends SQLFilter
 
     /**
      * Set the current user for which we should apply access limitations
-     *
-     * @param null|User $user
      */
     public function setUser(?User $user): void
     {

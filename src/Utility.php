@@ -24,9 +24,6 @@ abstract class Utility
 
     /**
      * Print a list of files if non empty
-     *
-     * @param string $title
-     * @param array $files
      */
     public static function printFiles(string $title, array $files): void
     {

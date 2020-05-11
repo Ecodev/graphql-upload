@@ -16,8 +16,6 @@ trait AbstractFile
 {
     /**
      * Get base path where the files are stored in the server
-     *
-     * @return string
      */
     abstract protected function getBasePath(): string;
 
@@ -45,8 +43,6 @@ trait AbstractFile
 
     /**
      * Set the file
-     *
-     * @param UploadedFileInterface $file
      */
     public function setFile(UploadedFileInterface $file): void
     {
@@ -65,8 +61,6 @@ trait AbstractFile
      * Set filename (without path)
      *
      * @API\Exclude
-     *
-     * @param string $filename
      */
     public function setFilename(string $filename): void
     {
@@ -77,8 +71,6 @@ trait AbstractFile
      * Get filename (without path)
      *
      * @API\Exclude
-     *
-     * @return string
      */
     public function getFilename(): string
     {
@@ -87,8 +79,6 @@ trait AbstractFile
 
     /**
      * Get mime
-     *
-     * @return string
      */
     public function getMime(): string
     {
@@ -99,8 +89,6 @@ trait AbstractFile
      * Get absolute path to file on disk
      *
      * @API\Exclude
-     *
-     * @return string
      */
     public function getPath(): string
     {
@@ -124,8 +112,6 @@ trait AbstractFile
 
     /**
      * Generate unique filename while trying to preserve original extension
-     *
-     * @param string $originalFilename
      */
     private function generateUniqueFilename(string $originalFilename): void
     {

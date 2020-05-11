@@ -15,11 +15,6 @@ use Money\Money;
 
 abstract class AbstractMoneyType extends ScalarType
 {
-    /**
-     * @param string $value
-     *
-     * @return Money
-     */
     abstract protected function createMoney(string $value): Money;
 
     /**

@@ -18,8 +18,6 @@ final class All implements AssertionInterface
 
     /**
      * Check if all asserts are true
-     *
-     * @param AssertionInterface ...$asserts
      */
     public function __construct(AssertionInterface ...$asserts)
     {

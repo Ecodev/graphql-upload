@@ -13,8 +13,6 @@ trait TestWithTransaction
 {
     /**
      * Get EntityManager
-     *
-     * @return EntityManager
      */
     public function getEntityManager(): EntityManager
     {

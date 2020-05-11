@@ -68,8 +68,6 @@ abstract class SearchOperatorType extends AbstractOperator
      * Map one class to one joined entity that is searchable
      *
      * This list should be kept as small as possible
-     *
-     * @return array
      */
     abstract protected function getSearchableJoinedEntities(): array;
 
@@ -77,13 +75,6 @@ abstract class SearchOperatorType extends AbstractOperator
      * Return searchable fields from a joined entity
      *
      * This should be avoided if possible to instead only search in the original entity itself.
-     *
-     * @param UniqueNameFactory $uniqueNameFactory
-     * @param ClassMetadata $metadata
-     * @param QueryBuilder $queryBuilder
-     * @param string $alias
-     *
-     * @return array
      */
     private function getSearchableFieldsOnJoin(UniqueNameFactory $uniqueNameFactory, ClassMetadata $metadata, QueryBuilder $queryBuilder, string $alias): array
     {
@@ -129,14 +120,6 @@ abstract class SearchOperatorType extends AbstractOperator
 
     /**
      * Return a DQL condition to search each of the words in any of the fields
-     *
-     * @param UniqueNameFactory $uniqueNameFactory
-     * @param ClassMetadata $metadata
-     * @param QueryBuilder $queryBuilder
-     * @param array $fields
-     * @param array $words
-     *
-     * @return string
      */
     private function buildSearchDqlCondition(UniqueNameFactory $uniqueNameFactory, ClassMetadata $metadata, QueryBuilder $queryBuilder, array $fields, array $words): string
     {

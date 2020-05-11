@@ -26,8 +26,6 @@ trait Repository
 
     /**
      * Returns the AclFilter to fetch ACL filtering SQL
-     *
-     * @return AclFilter
      */
     public function getAclFilter(): AclFilter
     {
@@ -39,8 +37,6 @@ trait Repository
 
     /**
      * Return native SQL query to get all ID
-     *
-     * @return string
      */
     protected function getAllIdsQuery(): string
     {
@@ -54,10 +50,6 @@ trait Repository
 
     /**
      * Return native SQL query to get all ID of object owned by given user
-     *
-     * @param User $user
-     *
-     * @return string
      */
     protected function getAllIdsForOwnerQuery(User $user): string
     {

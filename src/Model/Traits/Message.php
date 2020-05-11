@@ -51,8 +51,6 @@ trait Message
      * Set type
      *
      * @API\Input(type="MessageType")
-     *
-     * @param string $type
      */
     public function setType(string $type): void
     {
@@ -63,41 +61,27 @@ trait Message
      * Get type
      *
      * @API\Field(type="MessageType")
-     *
-     * @return string
      */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getSubject(): string
     {
         return $this->subject;
     }
 
-    /**
-     * @param string $subject
-     */
     public function setSubject(string $subject): void
     {
         $this->subject = $subject;
     }
 
-    /**
-     * @return string
-     */
     public function getBody(): string
     {
         return $this->body;
     }
 
-    /**
-     * @param string $body
-     */
     public function setBody(string $body): void
     {
         $this->body = $body;
@@ -105,8 +89,6 @@ trait Message
 
     /**
      * Get sent time
-     *
-     * @return null|Chronos
      */
     public function getDateSent(): ?Chronos
     {
@@ -117,8 +99,6 @@ trait Message
      * Set sent time
      *
      * @API\Exclude
-     *
-     * @param null|Chronos $dateSent
      */
     public function setDateSent(?Chronos $dateSent): void
     {
@@ -127,8 +107,6 @@ trait Message
 
     /**
      * Recipient email address
-     *
-     * @return string
      */
     public function getEmail(): string
     {
@@ -137,8 +115,6 @@ trait Message
 
     /**
      * Recipient email address
-     *
-     * @param string $email
      */
     public function setEmail(string $email): void
     {

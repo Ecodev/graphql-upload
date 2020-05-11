@@ -51,10 +51,6 @@ class PaginationTypeFactory implements AbstractFactoryInterface
 
     /**
      * GraphQL configuration for extra fields, typically for aggregated fields only available on some entities
-     *
-     * @param string $class
-     *
-     * @return array
      */
     protected function getExtraFields(string $class): array
     {

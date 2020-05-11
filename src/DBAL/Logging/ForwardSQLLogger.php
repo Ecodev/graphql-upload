@@ -23,8 +23,6 @@ final class ForwardSQLLogger extends DebugStack implements SQLLogger
 
     /**
      * Forward query to file logger
-     *
-     * @param array $query
      */
     private function forwardLog(array $query): void
     {

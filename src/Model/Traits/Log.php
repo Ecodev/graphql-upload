@@ -62,8 +62,6 @@ trait Log
 
     /**
      * Set priority
-     *
-     * @param int $priority
      */
     public function setPriority(int $priority): void
     {
@@ -72,8 +70,6 @@ trait Log
 
     /**
      * Get priority
-     *
-     * @return int
      */
     public function getPriority(): int
     {
@@ -82,8 +78,6 @@ trait Log
 
     /**
      * Set message
-     *
-     * @param string $message
      */
     public function setMessage(string $message): void
     {
@@ -92,8 +86,6 @@ trait Log
 
     /**
      * Get message
-     *
-     * @return string
      */
     public function getMessage(): string
     {
@@ -102,8 +94,6 @@ trait Log
 
     /**
      * Set referer
-     *
-     * @param string $referer
      */
     public function setReferer(string $referer): void
     {
@@ -112,8 +102,6 @@ trait Log
 
     /**
      * Get referer
-     *
-     * @return string
      */
     public function getReferer(): string
     {
@@ -122,8 +110,6 @@ trait Log
 
     /**
      * Set request
-     *
-     * @param string $request
      */
     public function setRequest(string $request): void
     {
@@ -132,8 +118,6 @@ trait Log
 
     /**
      * Get request
-     *
-     * @return string
      */
     public function getRequest(): string
     {
@@ -142,8 +126,6 @@ trait Log
 
     /**
      * Set ip
-     *
-     * @param string $ip
      */
     public function setIp(string $ip): void
     {
@@ -152,8 +134,6 @@ trait Log
 
     /**
      * Get ip
-     *
-     * @return string
      */
     public function getIp(): string
     {
@@ -162,8 +142,6 @@ trait Log
 
     /**
      * @API\Exclude
-     *
-     * @return array
      */
     public function getExtra(): array
     {
@@ -172,8 +150,6 @@ trait Log
 
     /**
      * @API\Exclude
-     *
-     * @param array $extra
      */
     public function setExtra(array $extra): void
     {

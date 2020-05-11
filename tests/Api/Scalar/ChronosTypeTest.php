@@ -27,9 +27,6 @@ final class ChronosTypeTest extends TestCase
 
     /**
      * @dataProvider providerParseValue
-     *
-     * @param string $input
-     * @param null|string $expected
      */
     public function testParseValue(string $input, ?string $expected): void
     {

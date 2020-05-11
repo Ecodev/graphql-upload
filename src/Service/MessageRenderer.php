@@ -31,14 +31,6 @@ final class MessageRenderer
 
     /**
      * Render a message by templating
-     *
-     * @param null|User $user
-     * @param string $email
-     * @param string $subject
-     * @param string $type
-     * @param array $mailParams
-     *
-     * @return string
      */
     public function render(?User $user, string $email, string $subject, string $type, array $mailParams, array $layoutParams = []): string
     {

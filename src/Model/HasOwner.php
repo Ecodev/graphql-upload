@@ -8,8 +8,6 @@ interface HasOwner extends Model
 {
     /**
      * Get owner
-     *
-     * @return null|User
      */
     public function getOwner(): ?User;
 }

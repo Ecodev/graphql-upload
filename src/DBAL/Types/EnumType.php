@@ -56,8 +56,6 @@ abstract class EnumType extends Type
 
     /**
      * Returns the type name based on actual class name
-     *
-     * @return string
      */
     public function getName(): string
     {

@@ -72,8 +72,6 @@ final class Server
 
     /**
      * Send response to CLI
-     *
-     * @param ExecutionResult $result
      */
     public function sendCli(ExecutionResult $result): void
     {
@@ -82,11 +80,6 @@ final class Server
 
     /**
      * Custom error handler to log in DB and show trigger messages to end-user
-     *
-     * @param Throwable $exception
-     * @param callable $formatter
-     *
-     * @return array
      */
     private function handleError(Throwable $exception, callable $formatter): array
     {

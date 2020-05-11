@@ -12,9 +12,6 @@ final class ColorTypeTest extends TestCase
 {
     /**
      * @dataProvider providerColors
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testSerialize(?string $input, bool $isValid): void
     {
@@ -25,9 +22,6 @@ final class ColorTypeTest extends TestCase
 
     /**
      * @dataProvider providerColors
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testParseValue(?string $input, bool $isValid): void
     {
@@ -44,9 +38,6 @@ final class ColorTypeTest extends TestCase
 
     /**
      * @dataProvider providerColors
-     *
-     * @param null|string $input
-     * @param bool $isValid
      */
     public function testParseLiteral(?string $input, bool $isValid): void
     {

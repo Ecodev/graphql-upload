@@ -17,9 +17,6 @@ abstract class AbstractDatabase
 {
     /**
      * Dump data from database on $remote server
-     *
-     * @param string $remote
-     * @param string $dumpFile path
      */
     private static function dumpDataRemotely(string $remote, string $dumpFile): void
     {
@@ -33,8 +30,6 @@ STRING;
 
     /**
      * Dump data from database
-     *
-     * @param string $dumpFile path
      */
     public static function dumpData(string $dumpFile): void
     {
@@ -52,9 +47,6 @@ STRING;
 
     /**
      * Copy a file from $remote
-     *
-     * @param string $remote
-     * @param string $dumpFile
      */
     private static function copyFile(string $remote, string $dumpFile): void
     {
@@ -68,8 +60,6 @@ STRING;
 
     /**
      * Load SQL dump in local database
-     *
-     * @param string $dumpFile
      */
     public static function loadData(string $dumpFile): void
     {
@@ -109,10 +99,6 @@ STRING;
 
     /**
      * Execute a shell command and throw exception if fails
-     *
-     * @param string $command
-     *
-     * @throws \Exception
      */
     public static function executeLocalCommand(string $command): void
     {
@@ -157,8 +143,6 @@ STRING;
      *
      * This use mysql command, instead of DBAL methods, to allow to see errors if any, and
      * also because it seems trigger creation do not work with DBAL for some unclear reasons.
-     *
-     * @param string $file
      */
     private static function importFile(string $file): void
     {

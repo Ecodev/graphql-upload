@@ -11,8 +11,6 @@ interface Model
 {
     /**
      * Get id
-     *
-     * @return null|int
      */
     public function getId(): ?int;
 }
