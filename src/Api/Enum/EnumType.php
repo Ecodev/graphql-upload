@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Enum;
 
-use GraphQL\Type\Definition\EnumType;
-
-class AbstractEnumType extends EnumType
+abstract class EnumType extends \GraphQL\Type\Definition\EnumType
 {
     public function __construct(array $constants)
     {

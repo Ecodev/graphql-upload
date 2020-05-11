@@ -7,7 +7,7 @@ namespace Ecodev\Felix\DBAL\Types;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-abstract class AbstractEnumType extends Type
+abstract class EnumType extends Type
 {
     public function getSqlDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {

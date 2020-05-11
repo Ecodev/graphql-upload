@@ -7,14 +7,14 @@ namespace EcodevTests\Felix\Api\Input\Operator;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ecodev\Felix\Api\Exception;
 use Ecodev\Felix\Api\Input\Operator\SearchOperatorType;
-use Ecodev\Felix\Testing\Api\Input\Operator\AbstractOperatorType;
+use Ecodev\Felix\Testing\Api\Input\Operator\OperatorType;
 use EcodevTests\Felix\Blog\Model\Post;
 use EcodevTests\Felix\Blog\Model\User;
 use EcodevTests\Felix\Traits\TestWithTypes;
 use GraphQL\Doctrine\Factory\UniqueNameFactory;
 use GraphQL\Type\Definition\Type;
 
-class SearchOperatorTypeTest extends AbstractOperatorType
+class SearchOperatorTypeTest extends OperatorType
 {
     use TestWithTypes;
 

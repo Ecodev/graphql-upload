@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace EcodevTests\Felix\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Ecodev\Felix\DBAL\Types\AbstractEnumType;
+use Ecodev\Felix\DBAL\Types\EnumType;
 use PHPUnit\Framework\TestCase;
 
-class AbstractEnumTypeTest extends TestCase
+class EnumTypeTest extends TestCase
 {
     /**
-     * @var AbstractEnumType
+     * @var EnumType
      */
     private $type;
 
@@ -22,7 +22,7 @@ class AbstractEnumTypeTest extends TestCase
 
     public function setUp(): void
     {
-        $this->type = new class() extends AbstractEnumType {
+        $this->type = new class() extends EnumType {
             protected function getPossibleValues(): array
             {
                 return ['value1', 'value2'];
