@@ -8,7 +8,7 @@ use Ecodev\Felix\Model\CurrentUser;
 use Ecodev\Felix\Repository\LogRepository;
 use Laminas\Log\Writer\AbstractWriter;
 
-final class DbWriter extends AbstractWriter
+class DbWriter extends AbstractWriter
 {
     /**
      * @var LogRepository
@@ -32,13 +32,13 @@ final class DbWriter extends AbstractWriter
      *
      * @param array $event log data event
      */
-    protected function doWrite(array $event): void
+    final protected function doWrite(array $event): void
     {
         $completedEvent = $this->completeEvent($event);
         $this->logRepository->log($completedEvent);
     }
 
-    private function completeEvent(array $event): array
+    protected function completeEvent(array $event): array
     {
         $envData = $this->getEnvData();
         $event = array_merge($event, $envData);
@@ -47,6 +47,9 @@ final class DbWriter extends AbstractWriter
         if ($event['extra']['errno'] ?? false) {
             $event['message'] .= "\nStacktrace:\n" . $this->getStacktrace();
         }
+
+        // Security hide clear text password
+        unset($event['extra']['password']);
 
         $event['creation_date'] = $event['timestamp'];
         unset($event['timestamp'], $event['priorityName']);
