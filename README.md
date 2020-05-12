@@ -20,7 +20,7 @@ composer require ecodev/felix
 
 ## Non-goals
 
-This is not a flexible or complete framework. It is a common pieces of code for a
+This is not a flexible or complete framework. It is common pieces of code for a
 specific purpose. It is not meant to be generic.
 
 If code is becoming too complex to adapt to all use-cases, then we should instead
