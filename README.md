@@ -18,4 +18,12 @@ Install the library via composer:
 composer require ecodev/felix
 ```
 
+## Non-goals
+
+This is not a flexible or complete framework. It is a common pieces of code for a
+specific purpose. It is not meant to be generic.
+
+If code is becoming too complex to adapt to all use-cases, then we should instead
+consider implementing it in the application itself instead ot this library.
+
 ![Felix](logo.svg)
