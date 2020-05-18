@@ -9,6 +9,7 @@ use GraphQL\Error\InvariantViolation;
 use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\Utils;
 use Psr\Http\Message\UploadedFileInterface;
+use UnexpectedValueException;
 
 class UploadType extends ScalarType
 {
@@ -46,7 +47,7 @@ class UploadType extends ScalarType
     public function parseValue($value)
     {
         if (!$value instanceof UploadedFileInterface) {
-            throw new \UnexpectedValueException('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: ' . Utils::printSafe($value));
+            throw new UnexpectedValueException('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: ' . Utils::printSafe($value));
         }
 
         return $value;

@@ -22,6 +22,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use stdClass;
 
 class UploadMiddlewareTest extends TestCase
 {
@@ -30,7 +31,7 @@ class UploadMiddlewareTest extends TestCase
      */
     private $middleware;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->middleware = new UploadMiddleware();
     }
@@ -61,7 +62,7 @@ class UploadMiddlewareTest extends TestCase
 
         // The request should be forward to processRequest()
         $request = new ServerRequest();
-        $middleware->expects($this->once())->method('processRequest')->with($request);
+        $middleware->expects(self::once())->method('processRequest')->with($request);
 
         $actualResponse = $middleware->process($request, $handler);
         self::assertSame($response, $actualResponse, 'should return the mocked response');
@@ -148,7 +149,7 @@ class UploadMiddlewareTest extends TestCase
         $request = new ServerRequest();
         $request = $request
             ->withHeader('content-type', ['multipart/form-data'])
-            ->withParsedBody(new \stdClass());
+            ->withParsedBody(new stdClass());
 
         $this->expectException(RequestError::class);
         $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got []');
@@ -160,7 +161,7 @@ class UploadMiddlewareTest extends TestCase
         $request = new ServerRequest();
         $request = $request
             ->withHeader('content-type', ['application/json'])
-            ->withParsedBody(new \stdClass());
+            ->withParsedBody(new stdClass());
 
         $processedRequest = $this->middleware->processRequest($request);
         self::assertSame($request, $processedRequest);
@@ -206,17 +207,13 @@ class UploadMiddlewareTest extends TestCase
         $response = $server->executePsrRequest($processedRequest);
 
         $expected = ['testUpload' => 'Uploaded file was image.jpg (image/jpeg) with description: foo bar'];
-        $this->assertSame($expected, $response->data);
+        self::assertSame($expected, $response->data);
     }
 
     /**
-     * @param string $query
      * @param mixed[] $variables
      * @param string[][] $map
      * @param UploadedFile[] $files
-     * @param string $operation
-     *
-     * @return ServerRequestInterface
      */
     private function createRequest(string $query, array $variables, array $map, array $files, string $operation): ServerRequestInterface
     {

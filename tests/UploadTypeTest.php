@@ -10,6 +10,7 @@ use GraphQL\Language\AST\StringValueNode;
 use GraphQL\Upload\UploadType;
 use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
 use PHPUnit\Framework\TestCase;
+use UnexpectedValueException;
 
 class UploadTypeTest extends TestCase
 {
@@ -24,7 +25,7 @@ class UploadTypeTest extends TestCase
     public function testCannotParseNonUploadedFileInstance(): void
     {
         $type = new UploadType();
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
         $this->expectExceptionMessage('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: foo');
 
         $type->parseValue('foo');
