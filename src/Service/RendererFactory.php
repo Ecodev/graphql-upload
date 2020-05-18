@@ -16,13 +16,9 @@ final class RendererFactory implements FactoryInterface
     /**
      * Return a configured mailer
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param null|array $options
-     *
-     * @return RendererInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): RendererInterface
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): RendererInterface
     {
         $renderer = new PhpRenderer();
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecodev\Felix;
 
 use GraphQL\Doctrine\Definition\EntityID;
+use ReflectionClass;
 
 abstract class Utility
 {
@@ -12,12 +13,10 @@ abstract class Utility
      * Returns the short class name of any object, eg: Application\Model\Calendar => Calendar
      *
      * @param object|string $object
-     *
-     * @return string
      */
     public static function getShortClassName($object): string
     {
-        $reflect = new \ReflectionClass($object);
+        $reflect = new ReflectionClass($object);
 
         return $reflect->getShortName();
     }
@@ -43,8 +42,6 @@ abstract class Utility
      * Replace EntityID model and don't touch other values
      *
      * @param array $data mix of objects and scalar values
-     *
-     * @return null|array
      */
     public static function entityIdToModel(?array $data): ?array
     {

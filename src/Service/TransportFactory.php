@@ -16,13 +16,9 @@ final class TransportFactory implements FactoryInterface
     /**
      * Return a configured mail transport
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param null|array $options
-     *
-     * @return TransportInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): TransportInterface
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): TransportInterface
     {
         $config = $container->get('config');
 

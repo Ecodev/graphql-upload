@@ -28,7 +28,6 @@ final class FilteredFieldResolver
      * @param mixed $source
      * @param mixed[] $args
      * @param mixed $context
-     * @param ResolveInfo $info
      *
      * @return null|mixed
      */

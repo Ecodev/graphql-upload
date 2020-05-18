@@ -53,7 +53,7 @@ final class ImageAction extends AbstractAction
             $path = $this->imageResizer->resize($image, $maxHeight);
         }
 
-        $resource = fopen($path, 'r');
+        $resource = fopen($path, 'rb');
         if ($resource === false) {
             return $this->createError("Cannot open file for image $id on disk");
         }

@@ -54,8 +54,6 @@ class Acl extends \Laminas\Permissions\Acl\Acl
      * This method always return false for usage convenience and should be used by all assertions,
      * instead of only return false themselves.
      *
-     * @param string $reason
-     *
      * @return false
      */
     public function reject(string $reason): bool

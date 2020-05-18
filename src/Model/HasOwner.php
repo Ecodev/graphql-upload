@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Model;
 
-interface HasOwner extends Model
+interface HasOwner
 {
     /**
      * Get owner

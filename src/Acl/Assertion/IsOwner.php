@@ -23,7 +23,7 @@ final class IsOwner implements AssertionInterface
      *
      * @return bool
      */
-    public function assert(Acl $acl, RoleInterface $role = null, ResourceInterface $resource = null, $privilege = null)
+    public function assert(Acl $acl, ?RoleInterface $role = null, ?ResourceInterface $resource = null, $privilege = null)
     {
         /** @var HasOwner $object */
         $object = $resource->getInstance();

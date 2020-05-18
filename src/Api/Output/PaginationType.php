@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api\Output;
 
 use GraphQL\Type\Definition\ObjectType;
+use ReflectionClass;
 
 final class PaginationType extends ObjectType
 {
@@ -12,11 +13,10 @@ final class PaginationType extends ObjectType
      * PaginationType constructor.
      *
      * @param class-string $class
-     * @param array $extraFields
      */
     public function __construct(string $class, array $extraFields)
     {
-        $c = new \ReflectionClass($class);
+        $c = new ReflectionClass($class);
         $s = $c->getShortName();
         $name = $s . 'Pagination';
 

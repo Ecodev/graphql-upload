@@ -15,8 +15,6 @@ final class PasswordType extends AbstractStringBasedType
      * Validate a token
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     protected function isValid($value): bool
     {

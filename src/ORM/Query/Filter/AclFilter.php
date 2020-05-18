@@ -54,8 +54,6 @@ final class AclFilter extends SQLFilter
      * that method destroy the filter object and thus losing the current user. So to keep
      * our internal state intact we must implement a custom enable/disable mechanism.
      *
-     * @param callable $callable
-     *
      * @return mixed whatever the callable returned
      */
     public function runWithoutAcl(callable $callable)
@@ -82,10 +80,7 @@ final class AclFilter extends SQLFilter
     }
 
     /**
-     * @param ClassMetaData $targetEntity
      * @param string $targetTableAlias
-     *
-     * @return string
      */
     public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias): string
     {

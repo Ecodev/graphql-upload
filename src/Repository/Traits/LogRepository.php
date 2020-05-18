@@ -11,6 +11,7 @@ use Doctrine\ORM\QueryBuilder;
 use Ecodev\Felix\Model\User;
 use Ecodev\Felix\Repository\LogRepository as LogRepositoryInterface;
 use Laminas\Log\Logger;
+use PDO;
 
 trait LogRepository
 {
@@ -73,7 +74,7 @@ trait LogRepository
             ->setParameter('ip', $ip)
             ->orderBy('id', 'DESC');
 
-        $events = $select->execute()->fetchAll(\PDO::FETCH_COLUMN);
+        $events = $select->execute()->fetchAll(PDO::FETCH_COLUMN);
 
         // Goes from present to past and count failure, until the last time we succeeded logging in
         $failureCount = 0;

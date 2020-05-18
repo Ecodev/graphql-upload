@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Service;
 
+use Exception;
+
 /**
  * Tool to reload the entire local database from remote database for a given site
  *
@@ -21,8 +23,8 @@ abstract class AbstractDatabase
     private static function dumpDataRemotely(string $remote, string $dumpFile): void
     {
         $sshCmd = <<<STRING
-        ssh $remote "cd /sites/$remote/ && php7.4 bin/dump-data.php $dumpFile"
-STRING;
+                    ssh $remote "cd /sites/$remote/ && php7.4 bin/dump-data.php $dumpFile"
+            STRING;
 
         echo "dumping data $dumpFile on $remote...\n";
         self::executeLocalCommand($sshCmd);
@@ -51,8 +53,8 @@ STRING;
     private static function copyFile(string $remote, string $dumpFile): void
     {
         $copyCmd = <<<STRING
-        rsync -avz --progress $remote:$dumpFile $dumpFile
-STRING;
+                    rsync -avz --progress $remote:$dumpFile $dumpFile
+            STRING;
 
         echo "copying dump to $dumpFile ...\n";
         self::executeLocalCommand($copyCmd);
@@ -100,7 +102,7 @@ STRING;
         $fullCommand = "$command 2>&1";
         passthru($fullCommand, $return_var);
         if ($return_var) {
-            throw new \Exception('FAILED executing: ' . $command);
+            throw new Exception('FAILED executing: ' . $command);
         }
     }
 
@@ -157,11 +159,11 @@ STRING;
     {
         $absolutePath = realpath($file);
         if ($absolutePath === false) {
-            throw new \Exception('Cannot find absolute path for file: ' . $file);
+            throw new Exception('Cannot find absolute path for file: ' . $file);
         }
 
         if (!is_readable($absolutePath)) {
-            throw new \Exception("Cannot read dump file \"$absolutePath\"");
+            throw new Exception("Cannot read dump file \"$absolutePath\"");
         }
 
         return $absolutePath;

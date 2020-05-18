@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Service;
 
+use Exception;
 use Imagine\Image\ImagineInterface;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
@@ -13,13 +14,9 @@ final class ImagineFactory implements FactoryInterface
     /**
      * Return the preferred driver available on this system
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param null|array $options
-     *
-     * @return ImagineInterface
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): ImagineInterface
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): ImagineInterface
     {
         if (class_exists('Gmagick')) {
             return new \Imagine\Gmagick\Imagine();
@@ -29,6 +26,6 @@ final class ImagineFactory implements FactoryInterface
             return new \Imagine\Imagick\Imagine();
         }
 
-        throw new \Exception('Gmagick and Imagick are missing, install one of those module');
+        throw new Exception('Gmagick and Imagick are missing, install one of those module');
     }
 }

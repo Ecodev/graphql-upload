@@ -7,6 +7,7 @@ namespace EcodevTests\Felix\DBAL\Types;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Ecodev\Felix\DBAL\Types\CHFType;
+use InvalidArgumentException;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +23,7 @@ final class CHFTypeTest extends TestCase
      */
     private $platform;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->type = $this->getMockBuilder(CHFType::class)
             ->disableOriginalConstructor()
@@ -50,13 +51,13 @@ final class CHFTypeTest extends TestCase
 
     public function testConvertToPHPValueThrowsWithInvalidValue(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->type->convertToPHPValue('foo', $this->platform);
     }
 
     public function testConvertToDatabaseValueThrowsWithInvalidValue(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->type->convertToDatabaseValue('foo', $this->platform);
     }
 }

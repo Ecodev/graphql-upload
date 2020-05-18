@@ -6,6 +6,7 @@ namespace Ecodev\Felix\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\IntegerType;
+use InvalidArgumentException;
 use Money\Money;
 
 abstract class AbstractMoneyType extends IntegerType
@@ -38,7 +39,7 @@ abstract class AbstractMoneyType extends IntegerType
             return $value;
         }
 
-        throw new \InvalidArgumentException('Cannot convert to dababase value: ' . var_export($value, true));
+        throw new InvalidArgumentException('Cannot convert to dababase value: ' . var_export($value, true));
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform)

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api\Output;
 
 use Ecodev\Felix\Model\Model;
+use Exception;
 use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
@@ -25,12 +26,12 @@ class PaginationTypeFactory implements AbstractFactoryInterface
         return $class && is_a($class, Model::class, true);
     }
 
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): PaginationType
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): PaginationType
     {
         /** @var class-string|null $class */
         $class = $this->getClass($requestedName);
         if (!$class) {
-            throw new \Exception('Cannot create a PaginationType for a name not matching a model: ' . $requestedName);
+            throw new Exception('Cannot create a PaginationType for a name not matching a model: ' . $requestedName);
         }
 
         $extraFields = $this->getExtraFields($class);

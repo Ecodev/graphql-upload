@@ -7,6 +7,7 @@ namespace EcodevTests\Felix;
 use Ecodev\Felix\Utility;
 use EcodevTests\Felix\Blog\Model\User;
 use GraphQL\Doctrine\Definition\EntityID;
+use stdClass;
 
 final class UtilityTest extends \PHPUnit\Framework\TestCase
 {
@@ -19,7 +20,7 @@ final class UtilityTest extends \PHPUnit\Framework\TestCase
     public function testModelToId(): void
     {
         $input = [
-            3 => new \stdClass(),
+            3 => new stdClass(),
             4 => 1,
             'model' => new User(),
             'entity' => new class() extends EntityID {

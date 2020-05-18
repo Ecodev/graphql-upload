@@ -13,7 +13,7 @@ use Ecodev\Felix\Model\Model;
  *
  * @ORM\MappedSuperclass
  */
-abstract class AbstractModel implements Model, HasOwner
+abstract class AbstractModel implements HasOwner, Model
 {
     /**
      * @var int

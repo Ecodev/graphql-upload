@@ -6,6 +6,7 @@ namespace Ecodev\Felix\Model\Traits;
 
 use Cake\Chronos\Chronos;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
  * Trait for a user with a password and password reset capabilities
@@ -49,7 +50,7 @@ trait HasPassword
 
         $password = password_hash($password, PASSWORD_DEFAULT);
         if (!is_string($password)) {
-            throw new \Exception('Could not hash password');
+            throw new Exception('Could not hash password');
         }
 
         $this->password = $password;

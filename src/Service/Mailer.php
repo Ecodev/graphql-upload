@@ -177,7 +177,7 @@ class Mailer
     {
         $lockFile = 'data/tmp/mailer.lock';
         touch($lockFile);
-        $this->lock = fopen($lockFile, 'r+');
+        $this->lock = fopen($lockFile, 'r+b');
         if ($this->lock === false) {
             throw new Exception('Could not read lock file. This is not normal and might be a permission issue');
         }

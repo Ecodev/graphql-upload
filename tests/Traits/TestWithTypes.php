@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EcodevTests\Felix\Traits;
 
-use DateTime;
+use DateTimeImmutable;
 use GraphQL\Doctrine\Types;
 use Laminas\ServiceManager\ServiceManager;
 
@@ -30,7 +30,7 @@ trait TestWithTypes
             'invokables' => [
             ],
             'aliases' => [
-                'datetime' => DateTime::class, // Declare alias for Doctrine type to be used for filters
+                'datetime' => DateTimeImmutable::class, // Declare alias for Doctrine type to be used for filters
             ],
         ]);
 

@@ -52,8 +52,6 @@ class Server
     }
 
     /**
-     * @param ServerRequestInterface $request
-     *
      * @return ExecutionResult|ExecutionResult[]
      */
     public function execute(ServerRequestInterface $request)

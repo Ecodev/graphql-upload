@@ -34,7 +34,7 @@ final class All implements AssertionInterface
      *
      * @return bool
      */
-    public function assert(Acl $acl, RoleInterface $role = null, ResourceInterface $resource = null, $privilege = null)
+    public function assert(Acl $acl, ?RoleInterface $role = null, ?ResourceInterface $resource = null, $privilege = null)
     {
         foreach ($this->asserts as $assert) {
             if (!$assert->assert($acl, $role, $resource, $privilege)) {

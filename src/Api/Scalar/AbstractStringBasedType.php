@@ -9,6 +9,7 @@ use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\StringValueNode;
 use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\Utils;
+use UnexpectedValueException;
 
 abstract class AbstractStringBasedType extends ScalarType
 {
@@ -16,8 +17,6 @@ abstract class AbstractStringBasedType extends ScalarType
      * Validate value
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     abstract protected function isValid($value): bool;
 
@@ -44,7 +43,7 @@ abstract class AbstractStringBasedType extends ScalarType
     public function parseValue($value)
     {
         if (!$this->isValid($value)) {
-            throw new \UnexpectedValueException('Query error: Not a valid ' . $this->name . ': ' . Utils::printSafe($value));
+            throw new UnexpectedValueException('Query error: Not a valid ' . $this->name . ': ' . Utils::printSafe($value));
         }
 
         return $value;
@@ -54,11 +53,10 @@ abstract class AbstractStringBasedType extends ScalarType
      * Parses an externally provided literal value to use as an input (e.g. in Query AST)
      *
      * @param Node $ast
-     * @param null|array $variables
      *
      * @return null|string
      */
-    public function parseLiteral($ast, array $variables = null)
+    public function parseLiteral($ast, ?array $variables = null)
     {
         // Note: throwing GraphQL\Error\Error vs \UnexpectedValueException to benefit from GraphQL
         // error location in query:

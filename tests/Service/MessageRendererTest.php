@@ -22,7 +22,7 @@ final class MessageRendererTest extends TestCase
         $mailParams = ['fooMail' => 'barMail'];
 
         $viewRenderer = $this->createMock(RendererInterface::class);
-        $viewRenderer->expects($this->exactly(2))
+        $viewRenderer->expects(self::exactly(2))
             ->method('render')
             ->withConsecutive(
                 [

@@ -16,5 +16,5 @@ interface LimitedAccessSubQuery
      *
      * If no filter should be applied, you should return empty string ''
      */
-    public function getAccessibleSubQuery(?\Ecodev\Felix\Model\User $user): string;
+    public function getAccessibleSubQuery(?User $user): string;
 }

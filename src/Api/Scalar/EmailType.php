@@ -20,8 +20,6 @@ final class EmailType extends AbstractStringBasedType
      * Validate a email
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     protected function isValid($value): bool
     {
@@ -48,7 +46,7 @@ final class EmailType extends AbstractStringBasedType
         return parent::parseValue($value);
     }
 
-    public function parseLiteral($ast, array $variables = null)
+    public function parseLiteral($ast, ?array $variables = null)
     {
         if ($ast instanceof StringValueNode && $ast->value === '') {
             return null;

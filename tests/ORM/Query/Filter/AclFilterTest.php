@@ -9,6 +9,7 @@ use Ecodev\Felix\ORM\Query\Filter\AclFilter;
 use EcodevTests\Felix\Blog\Model\Post;
 use EcodevTests\Felix\Blog\Model\User;
 use EcodevTests\Felix\Traits\TestWithEntityManager;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 final class AclFilterTest extends TestCase
@@ -67,7 +68,7 @@ final class AclFilterTest extends TestCase
         $targetEntity = $this->entityManager->getMetadataFactory()->getMetadataFor(Post::class);
         $filter = new AclFilter($this->entityManager);
 
-        $this->assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled by default');
+        self::assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled by default');
 
         $filter->runWithoutAcl(function () use ($filter, $targetEntity): void {
             $this->assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'can disable');
@@ -79,7 +80,7 @@ final class AclFilterTest extends TestCase
             $this->assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enable once and still disabled');
         });
 
-        $this->assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled a second time and really enabled');
+        self::assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled a second time and really enabled');
     }
 
     public function testDisableForever(): void
@@ -88,16 +89,16 @@ final class AclFilterTest extends TestCase
         $targetEntity = $this->entityManager->getMetadataFactory()->getMetadataFor(Post::class);
         $filter = new AclFilter($this->entityManager);
 
-        $this->assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled by default');
+        self::assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled by default');
 
         $filter->disableForever();
-        $this->assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'disabled forever');
+        self::assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'disabled forever');
 
         $filter->runWithoutAcl(function () use ($filter, $targetEntity): void {
             $this->assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'also disabled forever anyway');
         });
 
-        $this->assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'still disabled forever');
+        self::assertSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'still disabled forever');
     }
 
     public function testExceptionWillReEnableFilter(): void
@@ -108,11 +109,11 @@ final class AclFilterTest extends TestCase
 
         try {
             $filter->runWithoutAcl(function (): void {
-                throw new \Exception();
+                throw new Exception();
             });
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
 
-        $this->assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled even after exception');
+        self::assertNotSame('', $filter->addFilterConstraint($targetEntity, 'test'), 'enabled even after exception');
     }
 }

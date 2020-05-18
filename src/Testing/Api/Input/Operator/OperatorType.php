@@ -36,7 +36,6 @@ class OperatorType extends \PHPUnit\Framework\TestCase
     /**
      * Parse an array of ID into an array of EntityID
      *
-     * @param string $entity
      * @param null|int[] $ids
      *
      * @return null|EntityID[]

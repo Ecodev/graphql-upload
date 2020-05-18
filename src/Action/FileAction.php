@@ -41,7 +41,7 @@ final class FileAction extends AbstractAction
             return $this->createError("File for $id not found on disk, or not readable");
         }
 
-        $resource = fopen($path, 'r');
+        $resource = fopen($path, 'rb');
         if ($resource === false) {
             return $this->createError("Cannot open file for $id on disk");
         }

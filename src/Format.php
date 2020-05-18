@@ -13,8 +13,6 @@ abstract class Format
     /**
      * Truncate a string and append '…' at the end
      *
-     * @param string $string
-     * @param int $maxLength
      * @param string $ellipsis the string to indicate truncation happened
      *
      * @return string truncated string

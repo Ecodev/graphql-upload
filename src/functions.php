@@ -43,7 +43,6 @@ function _log(): LoggerInterface
  * By default will output result
  *
  * @param mixed $data
- * @param bool $return
  *
  * @return string string representation of variable
  */

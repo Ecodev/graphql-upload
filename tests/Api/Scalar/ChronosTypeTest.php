@@ -14,13 +14,13 @@ final class ChronosTypeTest extends TestCase
      */
     private $timezone;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->timezone = date_default_timezone_get();
         date_default_timezone_set('Europe/Zurich');
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         date_default_timezone_set($this->timezone);
     }

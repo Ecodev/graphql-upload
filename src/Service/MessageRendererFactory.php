@@ -16,13 +16,9 @@ final class MessageRendererFactory implements FactoryInterface
     /**
      * Return a configured mailer
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param null|array $options
-     *
-     * @return MessageRenderer
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): MessageRenderer
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): MessageRenderer
     {
         $viewRenderer = $container->get(RendererInterface::class);
         $config = $container->get('config');

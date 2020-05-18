@@ -100,12 +100,6 @@ abstract class SearchOperatorType extends AbstractOperator
     /**
      * Add a join and return searchable fields in order to search on a joined entity
      *
-     * @param UniqueNameFactory $uniqueNameFactory
-     * @param ClassMetadata $metadata
-     * @param QueryBuilder $queryBuilder
-     * @param string $alias
-     * @param string $fieldName
-     *
      * @return string[]
      */
     private function searchOnJoinedEntity(UniqueNameFactory $uniqueNameFactory, ClassMetadata $metadata, QueryBuilder $queryBuilder, string $alias, string $fieldName): array

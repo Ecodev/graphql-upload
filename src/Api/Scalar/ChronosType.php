@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api\Scalar;
 
 use Cake\Chronos\Chronos;
+use DateTimeZone;
 use GraphQL\Error\Error;
 use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\StringValueNode;
 use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\Utils;
+use UnexpectedValueException;
 
 final class ChronosType extends ScalarType
 {
@@ -44,7 +46,7 @@ final class ChronosType extends ScalarType
     public function parseValue($value)
     {
         if (!is_string($value)) {
-            throw new \UnexpectedValueException('Cannot represent value as Chronos date: ' . Utils::printSafe($value));
+            throw new UnexpectedValueException('Cannot represent value as Chronos date: ' . Utils::printSafe($value));
         }
 
         if ($value === '') {
@@ -52,7 +54,7 @@ final class ChronosType extends ScalarType
         }
 
         $date = new Chronos($value);
-        $date = $date->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+        $date = $date->setTimezone(new DateTimeZone(date_default_timezone_get()));
 
         return $date;
     }
@@ -61,11 +63,10 @@ final class ChronosType extends ScalarType
      * Parses an externally provided literal value to use as an input (e.g. in Query AST)
      *
      * @param Node $ast
-     * @param null|array $variables
      *
      * @return null|string
      */
-    public function parseLiteral($ast, array $variables = null)
+    public function parseLiteral($ast, ?array $variables = null)
     {
         // Note: throwing GraphQL\Error\Error vs \UnexpectedValueException to benefit from GraphQL
         // error location in query:

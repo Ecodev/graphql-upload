@@ -17,13 +17,9 @@ final class LoggerFactory implements FactoryInterface
     private $logger;
 
     /**
-     * @param ContainerInterface $container
      * @param string $requestedName
-     * @param null|array $options
-     *
-     * @return Logger
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Logger
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): Logger
     {
         if (!$this->logger) {
             // Log to file

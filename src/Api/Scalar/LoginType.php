@@ -15,8 +15,6 @@ class LoginType extends AbstractStringBasedType
      * Validate a login
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     protected function isValid($value): bool
     {

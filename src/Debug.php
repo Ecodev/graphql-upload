@@ -13,7 +13,6 @@ final class Debug
      *
      * @param mixed $data
      * @param bool $return
-     * @param int $level
      *
      * @return string string representation of variable
      */

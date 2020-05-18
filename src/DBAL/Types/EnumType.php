@@ -6,6 +6,9 @@ namespace Ecodev\Felix\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use Exception;
+use InvalidArgumentException;
+use ReflectionClass;
 
 abstract class EnumType extends Type
 {
@@ -28,7 +31,7 @@ abstract class EnumType extends Type
         }
 
         if (!in_array($value, $this->getPossibleValues(), true)) {
-            throw new \InvalidArgumentException("Invalid '" . $value . "' value fetched from database for enum " . get_class($this));
+            throw new InvalidArgumentException("Invalid '" . $value . "' value fetched from database for enum " . get_class($this));
         }
 
         return (string) $value;
@@ -41,7 +44,7 @@ abstract class EnumType extends Type
         }
 
         if (!in_array($value, $this->getPossibleValues(), true)) {
-            throw new \InvalidArgumentException("Invalid '" . $value . "' value to be stored in database for enum " . get_class($this));
+            throw new InvalidArgumentException("Invalid '" . $value . "' value to be stored in database for enum " . get_class($this));
         }
 
         return (string) $value;
@@ -59,12 +62,12 @@ abstract class EnumType extends Type
      */
     public function getName(): string
     {
-        $class = new \ReflectionClass($this);
+        $class = new ReflectionClass($this);
         $shortClassName = $class->getShortName();
         $typeName = preg_replace('/Type$/', '', $shortClassName);
 
         if ($typeName === null) {
-            throw new \Exception('Could not extract enum name from class name');
+            throw new Exception('Could not extract enum name from class name');
         }
 
         return $typeName;

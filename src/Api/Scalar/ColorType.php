@@ -15,8 +15,6 @@ final class ColorType extends AbstractStringBasedType
      * Validate a color in hexadecimal CSS notation
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     protected function isValid($value): bool
     {

@@ -10,8 +10,6 @@ final class UrlType extends AbstractStringBasedType
      * Validate an URL
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     protected function isValid($value): bool
     {

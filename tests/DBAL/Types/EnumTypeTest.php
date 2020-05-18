@@ -6,6 +6,7 @@ namespace EcodevTests\Felix\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Ecodev\Felix\DBAL\Types\EnumType;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class EnumTypeTest extends TestCase
@@ -20,7 +21,7 @@ final class EnumTypeTest extends TestCase
      */
     private $platform;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->type = new class() extends EnumType {
             protected function getPossibleValues(): array
@@ -50,28 +51,28 @@ final class EnumTypeTest extends TestCase
 
     public function testConvertToPHPValueThrowsWithInvalidValue(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $this->type->convertToPHPValue('foo', $this->platform);
     }
 
     public function testConvertToDatabaseValueThrowsWithInvalidValue(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $this->type->convertToDatabaseValue('foo', $this->platform);
     }
 
     public function testConvertToPHPValueThrowsWithZero(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $this->type->convertToPHPValue(0, $this->platform);
     }
 
     public function testConvertToDatabaseValueThrowsWithZero(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
         $this->type->convertToDatabaseValue(0, $this->platform);
     }

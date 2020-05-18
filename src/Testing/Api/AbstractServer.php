@@ -35,7 +35,7 @@ abstract class AbstractServer extends TestCase
         $schema = $this->createSchema();
         $schema->assertValid();
 
-        self::assertTrue(true, 'schema passes validation');
+        static::assertTrue(true, 'schema passes validation');
     }
 
     /**
@@ -66,7 +66,7 @@ abstract class AbstractServer extends TestCase
             unset($actual['errors'][0]['trace']);
         }
 
-        self::assertEquals($expected, $actual);
+        static::assertEquals($expected, $actual);
     }
 
     public function providerQuery(): array
@@ -103,9 +103,6 @@ abstract class AbstractServer extends TestCase
 
     /**
      * @param ExecutionResult|ExecutionResult[] $result
-     * @param bool $debug
-     *
-     * @return array
      */
     private function resultToArray($result, bool $debug): array
     {
