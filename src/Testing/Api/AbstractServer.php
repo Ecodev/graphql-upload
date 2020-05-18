@@ -35,7 +35,7 @@ abstract class AbstractServer extends TestCase
         $schema = $this->createSchema();
         $schema->assertValid();
 
-        static::assertTrue(true, 'schema passes validation');
+        self::assertTrue(true, 'schema passes validation');
     }
 
     /**
@@ -66,7 +66,7 @@ abstract class AbstractServer extends TestCase
             unset($actual['errors'][0]['trace']);
         }
 
-        static::assertEquals($expected, $actual);
+        self::assertEquals($expected, $actual);
     }
 
     public function providerQuery(): array

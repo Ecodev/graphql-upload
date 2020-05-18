@@ -24,7 +24,7 @@ class MappingTest extends TestCase
             $result .= PHP_EOL;
         }
 
-        static::assertSame('', trim($result), 'should have valid mapping');
+        self::assertSame('', trim($result), 'should have valid mapping');
     }
 
     /**
@@ -36,6 +36,6 @@ class MappingTest extends TestCase
         $em = _em();
         $validator = new SchemaValidator($em);
 
-        static::assertTrue($validator->schemaInSyncWithMetadata(), 'database should be in sync with mapping');
+        self::assertTrue($validator->schemaInSyncWithMetadata(), 'database should be in sync with mapping');
     }
 }
