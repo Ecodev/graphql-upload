@@ -24,7 +24,7 @@ abstract class AbstractDatabase
     {
         $sshCmd = <<<STRING
                     ssh $remote "cd /sites/$remote/ && php7.4 bin/dump-data.php $dumpFile"
-            STRING;
+STRING;
 
         echo "dumping data $dumpFile on $remote...\n";
         self::executeLocalCommand($sshCmd);
@@ -54,7 +54,7 @@ abstract class AbstractDatabase
     {
         $copyCmd = <<<STRING
                     rsync -avz --progress $remote:$dumpFile $dumpFile
-            STRING;
+STRING;
 
         echo "copying dump to $dumpFile ...\n";
         self::executeLocalCommand($copyCmd);
