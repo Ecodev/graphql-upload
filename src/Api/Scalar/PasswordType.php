@@ -12,7 +12,7 @@ final class PasswordType extends AbstractStringBasedType
     public $description = 'A password is a string of at least 12 characters';
 
     /**
-     * Validate a token
+     * Validate a password
      *
      * @param mixed $value
      */
