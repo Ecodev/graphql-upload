@@ -7,6 +7,7 @@ namespace Ecodev\Felix\Model\Traits;
 use Cake\Chronos\Chronos;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
+use GraphQL\Doctrine\Annotation as API;
 
 /**
  * Trait for a user with a password and password reset capabilities
