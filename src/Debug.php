@@ -12,11 +12,10 @@ final class Debug
      * By default will output result
      *
      * @param mixed $data
-     * @param bool $return
      *
      * @return string string representation of variable
      */
-    public static function export($data, $return = false, int $level = 0): string
+    public static function export($data, bool $return = false, int $level = 0): string
     {
         $result = '';
         if (is_array($data)) {
