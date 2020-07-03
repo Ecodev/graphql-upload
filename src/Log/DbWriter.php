@@ -77,6 +77,8 @@ class DbWriter extends AbstractWriter
             $referer = $_SERVER['HTTP_REFERER'] ?? '';
         }
 
+        $request = $this->removeSensitiveData($request);
+
         $envData = [
             'creator_id' => $user ? $user->getId() : null,
             'url' => $url,
@@ -86,6 +88,11 @@ class DbWriter extends AbstractWriter
         ];
 
         return $envData;
+    }
+
+    protected function removeSensitiveData(array $request): array
+    {
+        return $request;
     }
 
     /**
