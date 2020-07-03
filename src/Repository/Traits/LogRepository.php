@@ -35,8 +35,9 @@ trait LogRepository
      */
     public function log(array $event): void
     {
-        $event['creation_date'] = Chronos::instance($event['creation_date'])->toIso8601String();
+        $event['creation_date'] = Chronos::instance($event['timestamp'])->toIso8601String();
         $event['extra'] = json_encode($event['extra']);
+        unset($event['timestamp'], $event['priorityName']);
 
         $this->getEntityManager()->getConnection()->insert('log', $event);
     }

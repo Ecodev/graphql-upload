@@ -51,9 +51,6 @@ class DbWriter extends AbstractWriter
         // Security hide clear text password
         unset($event['extra']['password']);
 
-        $event['creation_date'] = $event['timestamp'];
-        unset($event['timestamp'], $event['priorityName']);
-
         return $event;
     }
 
