@@ -44,12 +44,12 @@
         "laminas/laminas-validator": "^2.13",
         "laminas/laminas-view": "^2.11",
         "mezzio/mezzio-session": "^1.3",
-        "moneyphp/money": "^3.3",
-        "mikey179/vfsstream": "^1.6"
+        "moneyphp/money": "^3.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "mikey179/vfsstream": "@stable"
     }
 }
