@@ -50,7 +50,10 @@ final class ImageAction extends AbstractAction
 
         $maxHeight = (int) $request->getAttribute('maxHeight');
         if ($maxHeight) {
-            $path = $this->imageResizer->resize($image, $maxHeight);
+            $accept = $request->getHeaderLine('accept');
+            $useWebp = mb_strpos($accept, 'image/webp') !== false;
+
+            $path = $this->imageResizer->resize($image, $maxHeight, $useWebp);
         }
 
         $resource = fopen($path, 'rb');

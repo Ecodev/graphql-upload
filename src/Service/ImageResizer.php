@@ -11,7 +11,7 @@ use Imagine\Image\ImagineInterface;
 /**
  * Service to resize image's images
  */
-final class ImageResizer
+class ImageResizer
 {
     private const CACHE_IMAGE_PATH = 'data/cache/images/';
 
@@ -28,14 +28,15 @@ final class ImageResizer
     /**
      * Resize image as JPG and return the path to the resized version
      */
-    public function resize(Image $image, int $maxHeight): string
+    public function resize(Image $image, int $maxHeight, bool $useWebp): string
     {
         if ($image->getHeight() <= $maxHeight || $image->getMime() === 'image/svg+xml') {
             return $image->getPath();
         }
 
         $basename = pathinfo($image->getFilename(), PATHINFO_FILENAME);
-        $path = realpath('.') . '/' . self::CACHE_IMAGE_PATH . $basename . '-' . $maxHeight . '.jpg';
+        $extension = $useWebp ? '.webp' : '.jpg';
+        $path = realpath('.') . '/' . self::CACHE_IMAGE_PATH . $basename . '-' . $maxHeight . $extension;
 
         if (file_exists($path)) {
             return $path;
