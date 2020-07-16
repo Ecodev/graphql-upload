@@ -43,8 +43,19 @@ class PaginationTypeFactory implements AbstractFactoryInterface
 
     private function getClass(string $requestedName): ?string
     {
-        if (preg_match(self::PATTERN, $requestedName, $m)) {
-            return 'Application\Model\\' . $m[1];
+        if (!preg_match(self::PATTERN, $requestedName, $m)) {
+            return null;
+        }
+
+        $possibilities = [
+            'Application\Model\\' . $m[1],
+            'Application\Model\Relation\\' . $m[1],
+        ];
+
+        foreach ($possibilities as $class) {
+            if (class_exists($class)) {
+                return $class;
+            }
         }
 
         return null;
