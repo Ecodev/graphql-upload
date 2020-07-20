@@ -26,6 +26,7 @@ final class RendererFactory implements FactoryInterface
         $renderer->setHelperPluginManager($helperPluginManager);
 
         $resolver = new TemplatePathStack();
+        $resolver->addPath('server/templates/app');
         $resolver->addPath('server/templates/emails');
         $renderer->setResolver($resolver);
 
