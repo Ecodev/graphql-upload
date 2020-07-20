@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EcodevTests\Felix\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Ecodev\Felix\DBAL\Types\EnumType;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +31,7 @@ final class EnumTypeTest extends TestCase
             }
         };
 
-        $this->platform = $this->createMock(AbstractPlatform::class);
+        $this->platform = new MySqlPlatform();
     }
 
     public function testEnum(): void

@@ -29,7 +29,7 @@ final class CHFTypeTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods([])
             ->getMock();
-        $this->platform = $this->createMock(AbstractPlatform::class);
+
         $this->platform = new MySqlPlatform();
     }
 
