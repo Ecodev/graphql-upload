@@ -4,7 +4,5 @@ parameters:
         - src/
         - tests/
     ignoreErrors:
-        - '~^Call to an undefined method PHPUnit\\Framework\\MockObject\\MockObject\:\:process\(\)\.$~'
         - '~^Access to an undefined property GraphQL\\Language\\AST\\Node::\$kind\.$~'
-        - "~^Cannot access offset 'variables' on array|object|null.$~"
-        - '~^Call to an undefined method Psr\\Http\\Message\\RequestInterface::withParsedBody\(\)\.$~'
+        - '~^Cannot access offset ''(variables|map)'' on array\|object\|null.$~'
