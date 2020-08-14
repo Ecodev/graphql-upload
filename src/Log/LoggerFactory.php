@@ -33,7 +33,6 @@ final class LoggerFactory implements FactoryInterface
             $this->logger->addWriter($dbWriter);
 
             // Register to log all kind of PHP errors
-            Logger::registerExceptionHandler($this->logger);
             Logger::registerErrorHandler($this->logger, true);
             Logger::registerFatalErrorShutdownFunction($this->logger);
         }
