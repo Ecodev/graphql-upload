@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GraphQLTests\Upload;
 
+use GraphQL\Error\DebugFlag;
 use GraphQL\Error\InvariantViolation;
 use GraphQL\Executor\ExecutionResult;
 use GraphQL\Server\RequestError;
@@ -236,8 +237,13 @@ class UploadMiddlewareTest extends TestCase
 
     private function createServer(): StandardServer
     {
+        $all = DebugFlag::INCLUDE_DEBUG_MESSAGE
+            | DebugFlag::INCLUDE_TRACE
+            | DebugFlag::RETHROW_INTERNAL_EXCEPTIONS
+            | DebugFlag::RETHROW_UNSAFE_EXCEPTIONS;
+
         return new StandardServer([
-            'debug' => true,
+            'debugFlag' => $all,
             'schema' => new Schema([
                 'query' => new ObjectType([
                     'name' => 'Query',
