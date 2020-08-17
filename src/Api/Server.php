@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ecodev\Felix\Api;
 
 use Doctrine\DBAL\Exception\DriverException;
-use GraphQL\Error\Debug;
+use GraphQL\Error\DebugFlag;
 use GraphQL\Executor\ExecutionResult;
 use GraphQL\GraphQL;
 use GraphQL\Server\ServerConfig;
@@ -36,7 +36,7 @@ class Server
         $this->config = ServerConfig::create([
             'schema' => $schema,
             'queryBatching' => true,
-            'debug' => $debug ? Debug::INCLUDE_DEBUG_MESSAGE | Debug::INCLUDE_TRACE : false,
+            'debug' => $debug ? DebugFlag::INCLUDE_DEBUG_MESSAGE | DebugFlag::INCLUDE_TRACE : false,
             'errorsHandler' => function (array $errors, callable $formatter) {
                 $result = [];
                 foreach ($errors as $e) {

@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\Proxy;
 use Ecodev\Felix\Api\FilteredFieldResolver;
 use EcodevTests\Felix\Blog\Model\User;
+use GraphQL\Type\Definition\FieldDefinition;
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -89,7 +90,8 @@ final class FilteredFieldResolverTest extends TestCase
             }
         };
 
-        $resolve = new ResolveInfo('field', [], Type::boolean(), new ObjectType(['name' => 'foo']), [], new Schema([]), [], null, null, []);
+        $fieldDefinition = FieldDefinition::create(['name' => 'field', 'type' => Type::boolean()]);
+        $resolve = new ResolveInfo($fieldDefinition, [], new ObjectType(['name' => 'foo']), [], new Schema([]), [], null, null, []);
         $resolver = new FilteredFieldResolver();
         self::assertSame($expected, $resolver($model, [], [], $resolve));
     }
