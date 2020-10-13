@@ -153,4 +153,23 @@ final class BvrTest extends TestCase
         $this->expectExceptionMessage('Invalid reference number. The verification digit does not match. Expected `0`, but got `6`');
         Bvr::extractCustomId('800826000000000000000002010');
     }
+
+    public function providerIban(): array
+    {
+        return [
+            ['30-12465-5', false],
+            ['', false],
+            ['CH2208390037471510005', false],
+            ['CH7030123036078110002', true],
+        ];
+    }
+
+    /**
+     * @dataProvider providerIban
+     */
+    public function testQrIban(string $iban, bool $expected): void
+    {
+        $actual = Bvr::isQrIban($iban);
+        self::assertSame($expected, $actual);
+    }
 }

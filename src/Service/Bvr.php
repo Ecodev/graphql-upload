@@ -82,6 +82,24 @@ final class Bvr
     }
 
     /**
+     * Check if an IBAN is actually a valid Swiss QR-IBAN
+     */
+    public static function isQrIban(string $iban): bool
+    {
+        if (!preg_match('/^CH[0-9]{2}([0-9]{5})[0-9A-Z]{12}$/', $iban, $m)) {
+            return false;
+        }
+
+        $bankClearing = (int) $m[1];
+
+        if ($bankClearing >= 30000 && $bankClearing <= 31199) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Get the full encoding line
      */
     public static function getEncodingLine(string $bankAccount, string $customId, string $postAccount, ?Money $amount = null): string
