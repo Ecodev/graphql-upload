@@ -101,6 +101,8 @@ final class Bvr
 
     /**
      * Get the full encoding line
+     *
+     * @deprecated since 2.3.2 as legacy BVR is being replaced by QR bill
      */
     public static function getEncodingLine(string $bankAccount, string $customId, string $postAccount, ?Money $amount = null): string
     {
