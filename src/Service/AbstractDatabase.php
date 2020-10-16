@@ -67,7 +67,7 @@ STRING;
     {
         $config = require 'config/autoload/local.php';
         $dbConfig = $config['doctrine']['connection']['orm_default']['params'];
-        $host = $dbConfig['host'];
+        $host = $dbConfig['host'] ?? 'localhost';
         $username = $dbConfig['user'];
         $database = $dbConfig['dbname'];
         $password = $dbConfig['password'];
