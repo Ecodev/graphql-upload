@@ -27,22 +27,4 @@ final class FormatTest extends \PHPUnit\Framework\TestCase
         $actual = Format::truncate(...$args);
         self::assertSame($expected, $actual);
     }
-
-    public function removeAccentsProvider(): array
-    {
-        return [
-            ['Škoda', 'Skoda'],
-            ["L'épicerie de la Côte", "L'epicerie de la Cote"],
-            ['Zürich', 'Zurich'],
-        ];
-    }
-
-    /**
-     * @dataProvider removeAccentsProvider
-     */
-    public function testRemoveAccents(string $input, string $expected): void
-    {
-        $actual = Format::removeAccents($input);
-        self::assertSame($expected, $actual);
-    }
 }
