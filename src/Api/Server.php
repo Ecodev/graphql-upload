@@ -33,10 +33,15 @@ class Server
     public function __construct(Schema $schema, bool $debug, array $rootValue = [])
     {
         GraphQL::setDefaultFieldResolver(new FilteredFieldResolver());
+
+        $all = DebugFlag::INCLUDE_DEBUG_MESSAGE
+            | DebugFlag::INCLUDE_TRACE
+            | DebugFlag::RETHROW_INTERNAL_EXCEPTIONS
+            | DebugFlag::RETHROW_UNSAFE_EXCEPTIONS;
         $this->config = ServerConfig::create([
             'schema' => $schema,
             'queryBatching' => true,
-            'debug' => $debug ? DebugFlag::INCLUDE_DEBUG_MESSAGE | DebugFlag::INCLUDE_TRACE : false,
+            'debugFlag' => $debug ? $all : 0,
             'errorsHandler' => function (array $errors, callable $formatter) {
                 $result = [];
                 foreach ($errors as $e) {
