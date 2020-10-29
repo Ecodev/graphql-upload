@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ecodev\Felix\Api\Scalar;
 
+use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\StringValueNode;
 use Laminas\Validator\EmailAddress;
 

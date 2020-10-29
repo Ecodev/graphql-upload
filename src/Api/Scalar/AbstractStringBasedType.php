@@ -29,7 +29,7 @@ abstract class AbstractStringBasedType extends ScalarType
      */
     public function serialize($value)
     {
-        // Assuming internal representation of url is always correct:
+        // Assuming internal representation is always correct:
         return $value;
     }
 
