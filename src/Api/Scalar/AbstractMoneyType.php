@@ -65,11 +65,9 @@ abstract class AbstractMoneyType extends ScalarType
     /**
      * Parses an externally provided literal value to use as an input (e.g. in Query AST)
      *
-     * @param Node $ast
-     *
      * @return Money
      */
-    public function parseLiteral($ast, ?array $variables = null)
+    public function parseLiteral(Node $ast, ?array $variables = null)
     {
         if ($ast instanceof StringValueNode || $ast instanceof IntValueNode || $ast instanceof FloatValueNode) {
             return $this->parseValue($ast->value);

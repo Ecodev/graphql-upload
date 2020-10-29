@@ -46,7 +46,7 @@ final class EmailType extends AbstractStringBasedType
         return parent::parseValue($value);
     }
 
-    public function parseLiteral($ast, ?array $variables = null)
+    public function parseLiteral(Node $ast, ?array $variables = null)
     {
         if ($ast instanceof StringValueNode && $ast->value === '') {
             return null;
