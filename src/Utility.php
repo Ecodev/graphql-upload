@@ -23,23 +23,6 @@ abstract class Utility
     }
 
     /**
-     * Print a list of files if non empty
-     */
-    public static function printFiles(string $title, array $files): void
-    {
-        if (!$files) {
-            return;
-        }
-
-        echo $title . PHP_EOL . PHP_EOL;
-
-        foreach ($files as $file) {
-            echo '    ' . escapeshellarg($file) . PHP_EOL;
-        }
-        echo PHP_EOL;
-    }
-
-    /**
      * Replace EntityID model and don't touch other values
      *
      * @param array $data mix of objects and scalar values
