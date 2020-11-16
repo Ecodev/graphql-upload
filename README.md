@@ -1,6 +1,6 @@
 # GraphQL Upload
 
-[![Build Status](https://travis-ci.com/Ecodev/graphql-upload.svg?branch=master)](https://travis-ci.com/Ecodev/graphql-upload)
+[![Build Status](https://github.com/ecodev/graphql-upload/workflows/build/badge.svg)](https://github.com/ecodev/graphql-upload/actions)
 [![Code Quality](https://scrutinizer-ci.com/g/Ecodev/graphql-upload/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ecodev/graphql-upload/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/Ecodev/graphql-upload/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Ecodev/graphql-upload/?branch=master)
 [![Total Downloads](https://poser.pugx.org/ecodev/graphql-upload/downloads.png)](https://packagist.org/packages/ecodev/graphql-upload)
