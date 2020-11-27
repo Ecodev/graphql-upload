@@ -9,6 +9,7 @@ jobs:
           - '7.2'
           - '7.3'
           - '7.4'
+          - '8.0'
 
     name: PHP ${{ matrix.php-version }}
 
@@ -28,6 +29,12 @@ jobs:
           path: ~/.cache/composer
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
+
+      - name: Update dependencies
+        if: matrix.php-version == '8.0'
+        run: |
+          rm composer.lock
+          composer remove --dev --no-update friendsofphp/php-cs-fixer
 
       - name: Install dependencies
         run: composer install
