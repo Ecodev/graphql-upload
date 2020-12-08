@@ -30,11 +30,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Update dependencies
+      - name: Remove lock for PHP 8
         if: matrix.php-version == '8.0'
-        run: |
-          rm composer.lock
-          composer remove --dev --no-update friendsofphp/php-cs-fixer
+        run: rm composer.lock
 
       - name: Install dependencies
         run: composer install
