@@ -41,13 +41,11 @@ class UploadMiddleware implements MiddlewareInterface
      */
     private function parseUploadedFiles(ServerRequestInterface $request): ServerRequestInterface
     {
+        /** @var string[] $bodyParams */
         $bodyParams = $request->getParsedBody();
-        if (!isset($bodyParams['map'])) {
-            throw new RequestError('The request must define a `map`');
-        }
 
-        $map = json_decode($bodyParams['map'], true);
-        $result = json_decode($bodyParams['operations'], true);
+        $map = $this->decodeArray($bodyParams, 'map');
+        $result = $this->decodeArray($bodyParams, 'operations');
 
         foreach ($map as $fileKey => $locations) {
             foreach ($locations as $location) {
@@ -92,5 +90,24 @@ class UploadMiddleware implements MiddlewareInterface
                 'PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got empty array'
             );
         }
+    }
+
+    /**
+     * @param string[] $bodyParams
+     *
+     * @return string[][]
+     */
+    private function decodeArray(array $bodyParams, string $key): array
+    {
+        if (!isset($bodyParams[$key])) {
+            throw new RequestError("The request must define a `$key`");
+        }
+
+        $value = json_decode($bodyParams[$key], true);
+        if (!is_array($value)) {
+            throw new RequestError("The `$key` key must be a JSON encoded array");
+        }
+
+        return $value;
     }
 }

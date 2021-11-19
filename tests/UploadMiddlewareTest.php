@@ -182,6 +182,34 @@ class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
+    public function testRequestWithMapThatIsNotArrayShouldThrows(): void
+    {
+        $request = $this->createRequest('{my query}', [], [], [], 'op');
+
+        // Replace map with json that is valid but no array
+        $body = $request->getParsedBody();
+        $body['map'] = json_encode('foo');
+        $request = $request->withParsedBody($body);
+
+        $this->expectException(RequestError::class);
+        $this->expectExceptionMessage('The `map` key must be a JSON encoded array');
+        $this->middleware->processRequest($request);
+    }
+
+    public function testRequestWithMapThatIsNotValidJsonShouldThrows(): void
+    {
+        $request = $this->createRequest('{my query}', [], [], [], 'op');
+
+        // Replace map with invalid json
+        $body = $request->getParsedBody();
+        $body['map'] = 'this is not json';
+        $request = $request->withParsedBody($body);
+
+        $this->expectException(RequestError::class);
+        $this->expectExceptionMessage('The `map` key must be a JSON encoded array');
+        $this->middleware->processRequest($request);
+    }
+
     public function testCanUploadFileWithStandardServer(): void
     {
         $query = 'mutation TestUpload($text: String, $file: Upload) {
