@@ -22,7 +22,7 @@ class UploadMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Process the request and return either a modified request or the original one
+     * Process the request and return either a modified request or the original one.
      */
     public function processRequest(ServerRequestInterface $request): ServerRequestInterface
     {
@@ -37,7 +37,7 @@ class UploadMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Inject uploaded files defined in the 'map' key into the 'variables' key
+     * Inject uploaded files defined in the 'map' key into the 'variables' key.
      */
     private function parseUploadedFiles(ServerRequestInterface $request): ServerRequestInterface
     {
@@ -69,7 +69,7 @@ class UploadMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Validates that the request meet our expectations
+     * Validates that the request meet our expectations.
      */
     private function validateParsedBody(ServerRequestInterface $request): void
     {

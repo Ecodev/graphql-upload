@@ -30,10 +30,10 @@
         "webonyx/graphql-php": "^14.3"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "@stable",
         "laminas/laminas-diactoros": "@stable",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "friendsofphp/php-cs-fixer": "@stable"
     },
     "license": "MIT"
 }

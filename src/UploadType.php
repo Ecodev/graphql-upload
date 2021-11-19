@@ -21,8 +21,8 @@ class UploadType extends ScalarType
     /**
      * @var string
      */
-    public $description =
-        'The `Upload` special type represents a file to be uploaded in the same HTTP request as specified by
+    public $description
+        = 'The `Upload` special type represents a file to be uploaded in the same HTTP request as specified by
  [graphql-multipart-request-spec](https://github.com/jaydenseric/graphql-multipart-request-spec).';
 
     /**
@@ -38,7 +38,7 @@ class UploadType extends ScalarType
     }
 
     /**
-     * Parses an externally provided value (query variable) to use as an input
+     * Parses an externally provided value (query variable) to use as an input.
      *
      * @param mixed $value
      *
@@ -54,7 +54,7 @@ class UploadType extends ScalarType
     }
 
     /**
-     * Parses an externally provided literal value (hardcoded in GraphQL query) to use as an input
+     * Parses an externally provided literal value (hardcoded in GraphQL query) to use as an input.
      *
      * @param \GraphQL\Language\AST\Node $valueNode
      * @param null|mixed[] $variables
