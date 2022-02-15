@@ -24,16 +24,16 @@
         }
     },
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-json": "*",
         "psr/http-server-middleware": "^1.0",
-        "webonyx/graphql-php": "^14.3"
+        "webonyx/graphql-php": "^14.11"
     },
+    "license": "MIT",
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "@stable",
         "laminas/laminas-diactoros": "@stable",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "@stable",
-        "friendsofphp/php-cs-fixer": "@stable"
-    },
-    "license": "MIT"
+        "phpunit/phpunit": "@stable"
+    }
 }
