@@ -57,7 +57,6 @@ class UploadType extends ScalarType
      * Parses an externally provided literal value (hardcoded in GraphQL query) to use as an input.
      *
      * @param \GraphQL\Language\AST\Node $valueNode
-     * @param null|mixed[] $variables
      *
      * @return mixed
      */

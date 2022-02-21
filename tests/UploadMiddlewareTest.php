@@ -27,7 +27,7 @@ use stdClass;
 
 class UploadMiddlewareTest extends TestCase
 {
-    private \GraphQL\Upload\UploadMiddleware $middleware;
+    private UploadMiddleware $middleware;
 
     protected function setUp(): void
     {
@@ -38,11 +38,8 @@ class UploadMiddlewareTest extends TestCase
     {
         $response = new Response();
         $handler = new class($response) implements RequestHandlerInterface {
-            private \Psr\Http\Message\ResponseInterface $response;
-
-            public function __construct(ResponseInterface $response)
+            public function __construct(private readonly ResponseInterface $response)
             {
-                $this->response = $response;
             }
 
             public function handle(ServerRequestInterface $request): ResponseInterface
