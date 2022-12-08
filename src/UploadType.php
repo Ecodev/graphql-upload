@@ -6,6 +6,7 @@ namespace GraphQL\Upload;
 
 use GraphQL\Error\Error;
 use GraphQL\Error\InvariantViolation;
+use GraphQL\Language\AST\Node;
 use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\Utils;
 use Psr\Http\Message\UploadedFileInterface;
@@ -27,24 +28,16 @@ class UploadType extends ScalarType
 
     /**
      * Serializes an internal value to include in a response.
-     *
-     * @param mixed $value
-     *
-     * @return mixed
      */
-    public function serialize($value)
+    public function serialize(mixed $value): never
     {
         throw new InvariantViolation('`Upload` cannot be serialized');
     }
 
     /**
      * Parses an externally provided value (query variable) to use as an input.
-     *
-     * @param mixed $value
-     *
-     * @return UploadedFileInterface
      */
-    public function parseValue($value)
+    public function parseValue(mixed $value): UploadedFileInterface
     {
         if (!$value instanceof UploadedFileInterface) {
             throw new UnexpectedValueException('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: ' . Utils::printSafe($value));
@@ -55,12 +48,8 @@ class UploadType extends ScalarType
 
     /**
      * Parses an externally provided literal value (hardcoded in GraphQL query) to use as an input.
-     *
-     * @param \GraphQL\Language\AST\Node $valueNode
-     *
-     * @return mixed
      */
-    public function parseLiteral($valueNode, ?array $variables = null)
+    public function parseLiteral(Node $valueNode, ?array $variables = null): mixed
     {
         throw new Error('`Upload` cannot be hardcoded in query, be sure to conform to GraphQL multipart request specification. Instead got: ' . $valueNode->kind, $valueNode);
     }
