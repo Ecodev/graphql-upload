@@ -23,7 +23,7 @@ class UploadType extends ScalarType
      * @var string
      */
     public $description
-        = 'The `Upload` special type represents a file to be uploaded in the same HTTP request as specified by
+        = 'The `' . $this->name . '` special type represents a file to be uploaded in the same HTTP request as specified by
  [graphql-multipart-request-spec](https://github.com/jaydenseric/graphql-multipart-request-spec).';
 
     /**
@@ -31,7 +31,7 @@ class UploadType extends ScalarType
      */
     public function serialize(mixed $value): never
     {
-        throw new InvariantViolation('`Upload` cannot be serialized');
+        throw new InvariantViolation('`' . $this->name . '` cannot be serialized');
     }
 
     /**
@@ -51,6 +51,6 @@ class UploadType extends ScalarType
      */
     public function parseLiteral(Node $valueNode, ?array $variables = null): mixed
     {
-        throw new Error('`Upload` cannot be hardcoded in query, be sure to conform to GraphQL multipart request specification. Instead got: ' . $valueNode->kind, $valueNode);
+        throw new Error('`' . $this->name . '` cannot be hardcoded in query, be sure to conform to GraphQL multipart request specification. Instead got: ' . $valueNode->kind, $valueNode);
     }
 }
