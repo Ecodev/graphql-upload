@@ -24,7 +24,7 @@ class UploadType extends ScalarType
      */
     public $description;
 
-    public function __construct (array $config = [])
+    public function __construct(array $config = [])
     {
         parent::__construct($config);
 
