@@ -22,9 +22,14 @@ class UploadType extends ScalarType
     /**
      * @var string
      */
-    public $description
-        = 'The `' . $this->name . '` special type represents a file to be uploaded in the same HTTP request as specified by
- [graphql-multipart-request-spec](https://github.com/jaydenseric/graphql-multipart-request-spec).';
+    public $description;
+
+    public function __construct (array $config = [])
+    {
+        parent::__construct($config);
+
+        $this->description = 'The `' . $this->name . '` special type represents a file to be uploaded in the same HTTP request as specified by [graphql-multipart-request-spec](https://github.com/jaydenseric/graphql-multipart-request-spec).';
+    }
 
     /**
      * Serializes an internal value to include in a response.
