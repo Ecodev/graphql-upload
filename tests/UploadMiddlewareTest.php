@@ -201,6 +201,32 @@ class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
+    public function testMissingUploadedFileShouldThrow(): void
+    {
+        $query = '{my query}';
+        $variables = [
+            'uploads' => [
+                0 => null,
+                1 => null,
+            ],
+        ];
+        $map = [
+            1 => ['variables.uploads.0'],
+            2 => ['variables.uploads.1'],
+        ];
+
+        $file1 = new PsrUploadedFileStub('image.jpg', 'image/jpeg');
+        $files = [
+            1 => $file1,
+        ];
+
+        $request = $this->createRequest($query, $variables, $map, $files, 'op');
+
+        $this->expectException(RequestError::class);
+        $this->expectExceptionMessage('GraphQL query declared an upload in `variables.uploads.1`, but no corresponding file were actually uploaded');
+        $this->middleware->processRequest($request);
+    }
+
     public function testCanUploadFileWithStandardServer(): void
     {
         $query = 'mutation TestUpload($text: String, $file: Upload) {

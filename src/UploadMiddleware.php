@@ -47,6 +47,7 @@ class UploadMiddleware implements MiddlewareInterface
         $map = $this->decodeArray($bodyParams, 'map');
         $result = $this->decodeArray($bodyParams, 'operations');
 
+        $uploadedFiles = $request->getUploadedFiles();
         foreach ($map as $fileKey => $locations) {
             foreach ($locations as $location) {
                 $items = &$result;
@@ -57,7 +58,13 @@ class UploadMiddleware implements MiddlewareInterface
                     $items = &$items[$key];
                 }
 
-                $items = $request->getUploadedFiles()[$fileKey];
+                if (!array_key_exists($fileKey, $uploadedFiles)) {
+                    throw new RequestError(
+                        "GraphQL query declared an upload in `$location`, but no corresponding file were actually uploaded"
+                    );
+                }
+
+                $items = $uploadedFiles[$fileKey];
             }
         }
 
