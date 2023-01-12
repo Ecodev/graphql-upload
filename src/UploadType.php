@@ -12,7 +12,7 @@ use GraphQL\Utils\Utils;
 use Psr\Http\Message\UploadedFileInterface;
 use UnexpectedValueException;
 
-class UploadType extends ScalarType
+final class UploadType extends ScalarType
 {
     public string $name = 'Upload';
 

@@ -6,7 +6,7 @@ namespace GraphQLTests\Upload\Psr7;
 
 use Laminas\Diactoros\UploadedFile;
 
-class PsrUploadedFileStub extends UploadedFile
+final class PsrUploadedFileStub extends UploadedFile
 {
     public function __construct(string $clientFilename, string $clientMediaType)
     {

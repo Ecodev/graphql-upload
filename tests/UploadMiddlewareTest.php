@@ -25,7 +25,7 @@ use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use stdClass;
 
-class UploadMiddlewareTest extends TestCase
+final class UploadMiddlewareTest extends TestCase
 {
     private UploadMiddleware $middleware;
 

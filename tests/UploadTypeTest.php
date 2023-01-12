@@ -12,7 +12,7 @@ use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
 
-class UploadTypeTest extends TestCase
+final class UploadTypeTest extends TestCase
 {
     public function testCanParseUploadedFileInstance(): void
     {
