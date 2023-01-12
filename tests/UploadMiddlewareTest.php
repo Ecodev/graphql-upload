@@ -144,7 +144,7 @@ class UploadMiddlewareTest extends TestCase
             ->withParsedBody(new stdClass());
 
         $this->expectException(RequestError::class);
-        $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got []');
+        $this->expectExceptionMessage('GraphQL Server expects JSON object or array, but got {}');
         $this->middleware->processRequest($request);
     }
 
@@ -292,6 +292,7 @@ class UploadMiddlewareTest extends TestCase
             'schema' => new Schema([
                 'query' => new ObjectType([
                     'name' => 'Query',
+                    'fields' => [],
                 ]),
                 'mutation' => new ObjectType([
                     'name' => 'Mutation',
