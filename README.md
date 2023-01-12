@@ -89,6 +89,7 @@ use Psr\Http\Message\UploadedFileInterface;
 $schema = new Schema([
     'query' => new ObjectType([
         'name' => 'Query',
+        'fields' => [],
     ]),
     'mutation' => new ObjectType([
         'name' => 'Mutation',
