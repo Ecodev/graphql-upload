@@ -60,7 +60,7 @@ class UploadMiddleware implements MiddlewareInterface
 
                 if (!array_key_exists($fileKey, $uploadedFiles)) {
                     throw new RequestError(
-                        "GraphQL query declared an upload in `$location`, but no corresponding file were actually uploaded"
+                        "GraphQL query declared an upload in `$location`, but no corresponding file were actually uploaded",
                     );
                 }
 
@@ -82,19 +82,19 @@ class UploadMiddleware implements MiddlewareInterface
 
         if (null === $bodyParams) {
             throw new InvariantViolation(
-                'PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got null'
+                'PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got null',
             );
         }
 
         if (!is_array($bodyParams)) {
             throw new RequestError(
-                'GraphQL Server expects JSON object or array, but got ' . Utils::printSafeJson($bodyParams)
+                'GraphQL Server expects JSON object or array, but got ' . Utils::printSafeJson($bodyParams),
             );
         }
 
         if (empty($bodyParams)) {
             throw new InvariantViolation(
-                'PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got empty array'
+                'PSR-7 request is expected to provide parsed body for "multipart/form-data" requests but got empty array',
             );
         }
     }

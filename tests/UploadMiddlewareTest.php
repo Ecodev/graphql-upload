@@ -38,9 +38,9 @@ final class UploadMiddlewareTest extends TestCase
     {
         $response = new Response();
         $handler = new class($response) implements RequestHandlerInterface {
-            public function __construct(private readonly ResponseInterface $response)
-            {
-            }
+            public function __construct(
+                private readonly ResponseInterface $response,
+            ) {}
 
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
