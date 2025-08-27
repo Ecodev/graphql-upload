@@ -112,7 +112,7 @@ final class UploadMiddlewareTest extends TestCase
         self::assertSame($request, $processedRequest, 'request should have been transformed as application/json');
     }
 
-    public function testEmptyRequestShouldThrows(): void
+    public function testEmptyRequestShouldThrow(): void
     {
         $request = new ServerRequest();
         $request = $request
@@ -124,7 +124,7 @@ final class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
-    public function testNullRequestShouldThrows(): void
+    public function testNullRequestShouldThrow(): void
     {
         $request = new ServerRequest();
         $request = $request
@@ -136,7 +136,7 @@ final class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
-    public function testInvalidRequestShouldThrows(): void
+    public function testInvalidRequestShouldThrow(): void
     {
         $request = new ServerRequest();
         $request = $request
@@ -159,7 +159,7 @@ final class UploadMiddlewareTest extends TestCase
         self::assertSame($request, $processedRequest);
     }
 
-    public function testRequestWithoutMapShouldThrows(): void
+    public function testRequestWithoutMapShouldThrow(): void
     {
         $request = $this->createRequest('{my query}', [], [], [], 'op');
 
@@ -173,7 +173,7 @@ final class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
-    public function testRequestWithMapThatIsNotArrayShouldThrows(): void
+    public function testRequestWithMapThatIsNotArrayShouldThrow(): void
     {
         $request = $this->createRequest('{my query}', [], [], [], 'op');
 
@@ -187,7 +187,7 @@ final class UploadMiddlewareTest extends TestCase
         $this->middleware->processRequest($request);
     }
 
-    public function testRequestWithMapThatIsNotValidJsonShouldThrows(): void
+    public function testRequestWithMapThatIsNotValidJsonShouldThrow(): void
     {
         $request = $this->createRequest('{my query}', [], [], [], 'op');
 
