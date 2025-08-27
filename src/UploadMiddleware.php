@@ -7,6 +7,7 @@ namespace GraphQL\Upload;
 use GraphQL\Error\InvariantViolation;
 use GraphQL\Server\RequestError;
 use GraphQL\Utils\Utils;
+use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -16,24 +17,19 @@ class UploadMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $request = $this->processRequest($request);
-
-        return $handler->handle($request);
-    }
-
-    /**
-     * Process the request and return either a modified request or the original one.
-     */
-    public function processRequest(ServerRequestInterface $request): ServerRequestInterface
-    {
         $contentType = $request->getHeader('content-type')[0] ?? '';
 
         if (mb_stripos($contentType, 'multipart/form-data') !== false) {
+            $error = $this->postMaxSizeError($request);
+            if ($error) {
+                return $error;
+            }
+
             $this->validateParsedBody($request);
             $request = $this->parseUploadedFiles($request);
         }
 
-        return $request;
+        return $handler->handle($request);
     }
 
     /**
@@ -116,5 +112,22 @@ class UploadMiddleware implements MiddlewareInterface
         }
 
         return $value;
+    }
+
+    private function postMaxSizeError(ServerRequestInterface $request): ?ResponseInterface
+    {
+        $contentLength = $request->getServerParams()['CONTENT_LENGTH'] ?? 0;
+        $postMaxSize = Utility::getPostMaxSize();
+        if ($contentLength && $contentLength > $postMaxSize) {
+            $contentLength = Utility::toMebibyte($contentLength);
+            $postMaxSize = Utility::toMebibyte($postMaxSize);
+
+            return new JsonResponse(
+                ['message' => "The server `post_max_size` is configured to accept $postMaxSize, but received $contentLength"],
+                413,
+            );
+        }
+
+        return null;
     }
 }

@@ -24,15 +24,15 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-json": "*",
         "psr/http-server-middleware": "^1.0",
-        "webonyx/graphql-php": "^15.0"
+        "webonyx/graphql-php": "^15.0",
+        "laminas/laminas-diactoros": "^3.6"
     },
     "license": "MIT",
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
-        "laminas/laminas-diactoros": "@stable",
         "phpstan/phpstan": "@stable",
         "phpunit/phpunit": "@stable"
     }

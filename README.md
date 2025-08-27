@@ -45,32 +45,6 @@ to your framework documentation.
 
 If your framework does not support PSR-15 middleware, you will probably
 need some kind of bridge. Again, refer to your framework for specific instructions.
-Or else, you could use the direct usage below for manual integration.
-
-### Direct usage
-
-If you don't use middleware, it can be called directly like so:
-
-```php
-<?php
-
-use GraphQL\Server\StandardServer;
-use GraphQL\Upload\UploadMiddleware;
-use Laminas\Diactoros\ServerRequestFactory;
-
-// Create request (or get it from a framework)
-$request = ServerRequestFactory::fromGlobals();
-$request = $request->withParsedBody(json_decode($request->getBody()->getContents(), true));
-
-// Process uploaded files
-$uploadMiddleware = new UploadMiddleware();
-$request = $uploadMiddleware->processRequest($request);
-
-// Execute request and emits response
-$server = new StandardServer(/* your config here */);
-$result = $server->executePsrRequest($request);
-$server->getHelper()->sendResponse($result);
-```
 
 ### Usage in schema
 
