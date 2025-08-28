@@ -11,7 +11,17 @@ final class Utility
 {
     public static function getPostMaxSize(): int
     {
-        return ini_parse_quantity(ini_get('post_max_size') ?: '0');
+        return self::fromIni('post_max_size');
+    }
+
+    public static function getUploadMaxFilesize(): int
+    {
+        return self::fromIni('upload_max_filesize');
+    }
+
+    private static function fromIni(string $key): int
+    {
+        return ini_parse_quantity(ini_get($key) ?: '0');
     }
 
     /**

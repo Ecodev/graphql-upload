@@ -37,6 +37,11 @@ final class UploadType extends ScalarType
             throw new UnexpectedValueException('Could not get uploaded file, be sure to conform to GraphQL multipart request specification. Instead got: ' . Utils::printSafe($value));
         }
 
+        $error = $value->getError();
+        if ($error !== UPLOAD_ERR_OK) {
+            throw new UploadError($error);
+        }
+
         return $value;
     }
 
