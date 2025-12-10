@@ -6,7 +6,6 @@
 [![Total Downloads](https://poser.pugx.org/ecodev/graphql-upload/downloads.png)](https://packagist.org/packages/ecodev/graphql-upload)
 [![Latest Stable Version](https://poser.pugx.org/ecodev/graphql-upload/v/stable.png)](https://packagist.org/packages/ecodev/graphql-upload)
 [![License](https://poser.pugx.org/ecodev/graphql-upload/license.png)](https://packagist.org/packages/ecodev/graphql-upload)
-[![Join the chat at https://gitter.im/Ecodev/graphql-upload](https://badges.gitter.im/Ecodev/graphql-upload.svg)](https://gitter.im/Ecodev/graphql-upload)
 
 A [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware to support file uploads in GraphQL. It implements
 [the multipart request specification](https://github.com/jaydenseric/graphql-multipart-request-spec)
