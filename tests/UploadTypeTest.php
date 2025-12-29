@@ -12,6 +12,7 @@ use GraphQL\Upload\UploadError;
 use GraphQL\Upload\UploadType;
 use GraphQL\Upload\Utility;
 use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 use UnexpectedValueException;
@@ -56,9 +57,8 @@ final class UploadTypeTest extends TestCase
 
     /**
      * @param class-string<Throwable> $e
-     *
-     * @dataProvider providerUploadErrorWillThrow
      */
+    #[DataProvider('providerUploadErrorWillThrow')]
     public function testUploadErrorWillThrow(int $errorStatus, string $expectedMessage, string $e = UploadError::class): void
     {
         $type = new UploadType();
