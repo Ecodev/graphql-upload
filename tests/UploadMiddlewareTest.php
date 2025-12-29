@@ -17,6 +17,7 @@ use GraphQL\Upload\UploadType;
 use GraphQL\Upload\Utility;
 use GraphQLTests\Upload\Psr7\PsrUploadedFileStub;
 use Laminas\Diactoros\Response;
+use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\UploadedFile;
 use PHPUnit\Framework\TestCase;
@@ -180,7 +181,12 @@ final class UploadMiddlewareTest extends TestCase
 
         $response = $this->getResponse($request);
         self::assertSame(413, $response->getStatusCode());
-        self::assertSame('{"message":"The server `post_max_size` is configured to accept ' . $postMaxSize . ', but received ' . $contentLength . '"}', $response->getBody()->getContents());
+
+        $expected = json_encode(
+            ['message' => "The server `post_max_size` is configured to accept $postMaxSize, but received $contentLength"],
+            JsonResponse::DEFAULT_JSON_FLAGS,
+        );
+        self::assertSame($expected, $response->getBody()->getContents());
     }
 
     public function testRequestWithSmallerPostSizeShouldBeOK(): void
