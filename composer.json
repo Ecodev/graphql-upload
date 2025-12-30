@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "ext-json": "*",
         "laminas/laminas-diactoros": "^3.8",
         "psr/http-server-middleware": "^1.0",
