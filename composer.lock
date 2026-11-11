@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "337106743e43acbd9b0c61701b19182b",
+    "content-hash": "71ee4e6e3bab1e1fc999b9cf2df8fda3",
     "packages": [
         {
             "name": "laminas/laminas-diactoros",
@@ -1259,7 +1259,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-04T22:21:45+00:00"
+            "time": "2026-08-04T22:21:45+00:00",
+            "published-time": "2026-08-04T22:21:59+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -5152,5 +5153,5 @@
         "ext-json": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

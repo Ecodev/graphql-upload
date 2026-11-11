@@ -35,5 +35,15 @@
         "friendsofphp/php-cs-fixer": "@stable",
         "phpstan/phpstan": "@stable",
         "phpunit/phpunit": "@stable"
+    },
+    "config": {
+        "policy": {
+            "cooldown": {
+                "period": "1 day",
+                "ignore": {
+                    "ecodev/*": "We trust the code in our own packages"
+                }
+            }
+        }
     }
 }
